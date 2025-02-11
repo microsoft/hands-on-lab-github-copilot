@@ -1,0 +1,28 @@
+{
+    "name": "Spring Boot DevContainer",
+    "image": "mcr.microsoft.com/devcontainers/java:21-bookworm",
+    "customizations": {
+        "vscode": {
+          "extensions": [
+            "ms-python.python",
+            "github.copilot",
+            "github.copilot-chat",
+            "ms-python.vscode-pylance",
+            "charliermarsh.ruff",
+            "vscjava.vscode-java-pack",
+            "pivotal.vscode-spring-boot"
+          ],
+          "settings": {
+            "editor.defaultFormatter": "charliermarsh.ruff",
+            "editor.formatOnSave": true,
+            "editor.codeActionsOnSave": {
+              "source.organizeImports": "always"
+            },
+            "python.languageServer": "Pylance",
+            "python.defaultInterpreterPath": "/usr/local/bin/python"
+          }
+        }
+      },
+    "remoteUser": "vscode"
+  }
+  
