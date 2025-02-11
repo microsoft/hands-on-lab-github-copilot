@@ -1,5 +1,5 @@
 {
-    "name": "Spring Boot DevContainer",
+    "name": "GitHub Copilot DevContainer",
     "image": "mcr.microsoft.com/devcontainers/java:21-bookworm",
     "customizations": {
         "vscode": {
