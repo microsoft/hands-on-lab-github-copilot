@@ -838,6 +838,14 @@ GitHub Copilot Chat is a versatile tool in Java application development. By usin
 
 ---
 
+# Github Copilot for Python Development
+
+---
+
+# Github Copilot Chat for Python Development
+
+---
+
 # More Prompt engineering in GitHub Copilot
 
 In this section you will learn techniques to get more accurate results using prompt engineering techniques.
