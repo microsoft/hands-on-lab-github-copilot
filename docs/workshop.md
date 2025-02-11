@@ -8,34 +8,36 @@ level: beginner
 navigation_numbering: false
 authors:
   - Yoshio Terada
-  - Philippe DIDIERGEORGES
-  - Louis-Guillaume MORAND
+  - Philippe Didiergeorges
+  - Louis-Guillaume Morand
   - Lucas Peirone
   - Damien Aicheh
+  - Julien Strebler
 contacts:
   - "@philess"
   - "@lgmorand"
   - "@yoshioterada"
   - "@lucas.peirone"
   - "@damienaicheh"
+  - "@julien.strebler"
 duration_minutes: 120
-tags: java, GitHub, copilot, AI, csu
-banner_url: assets/banner.jpg
+tags: java, python, GitHub, copilot, AI, csu
 navigation_levels: 3
 ---
 
 
 # Enhance Your Efficiency with GitHub Copilot: A Workshop
 
-This workshop is designed to guide you on how to leverage GitHub Copilot with Java through a hands-on exercise - the creation of a new Spring Boot Application. 
+This workshop is designed to guide you on how to leverage GitHub Copilot with Java and Python through hands-on exercises. 
 
 GitHub Copilot is an AI-powered code assistant, aimed at helping developers write better code more efficiently. It uses machine learning models, trained on billions of lines of code, to suggest entire lines or even functions, based on the context of your current work. By utilizing GitHub Copilot, you can improve your coding skills and increase your productivity.
 
-## Who Can Use GitHub Copilot?
+## Who can use GitHub Copilot?
 
 GitHub Copilot can be accessed through an individual account for personal use, or an Organization account for business use.
 
-GitHub Copilot is free for verified students, teachers, and maintainers of open-source projects. If you are not a student, teacher, or maintainer of an open-source project, you can try GitHub Copilot for free with a one-time 30-day trial. After the trial period, a paid subscription is required to continue using it.
+GitHub Copilot is free for verified students, teachers, and maintainers of open-source projects. It has now 
+a [free tier available on Visual Studio Code][free-tiers-gh-copilot]. If you are not a student, teacher, or maintainer of an open-source project, you can try GitHub Copilot for free with a one-time [30-day trial][free-trial-gh-copilot]. After the trial period, a paid subscription is required to continue using it.
 
 ## Capabilities of GitHub Copilot:
 
@@ -47,6 +49,7 @@ With GitHub Copilot, you can:
 - `Complete Code`: GitHub Copilot can offer code completion while you are entering your code.
 - `Generate Comments Automatically`: GitHub Copilot can auto-generate subsequent comments when you input a comment.
 - `Create Comment from Code`: GitHub Copilot can generate an explanation of the comments when you input a comment.
+- `Create commit message`: GitHub Copilot can generate the commit message based on your changes.
 
 ## Capabilities of GitHub Copilot Chat
 
@@ -59,54 +62,58 @@ With GitHub Copilot Chat, you can:
 
 <div class="warning" data-title="warning">
 
-> Please note that GitHub Copilot is a rapidly evolving product, and this workshop may not be 100% up to date with the various features of the different extensions you are going to use. Please use your discretion."
+> Please note that GitHub Copilot is a rapidly evolving product, some features can be modified and evolve and can be added as time goes by."
 
 </div>
+
+[free-tiers-gh-copilot]: https://github.blog/news-insights/product-news/github-copilot-in-vscode-free/
+[free-trial-gh-copilot]: https://docs.github.com/en/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/managing-your-github-copilot-pro-subscription/getting-free-access-to-copilot-pro-as-a-student-teacher-or-maintainer#what-if-i-dont-qualify-for-free-access-to-copilot-pro
 
 ---
 
 # Environment Setup
 
-To develop Java applications using GitHub Copilot, you need to have certain environments set up. If you haven't installed these environments yet, please do so as necessary.  
+To develop Java et Python applications using GitHub Copilot, you need to have certain environments set up. If you haven't installed these environments yet, please do so as necessary.  
 
 ## Required Software and Tools
 
 | Component                  | Download Location                                                                                                                                                                                                                                                                                 |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Editor                     | [Visual Studio Code](https://code.visualstudio.com/download) <br> [IntelliJ IDEA](https://www.jetbrains.com/idea/promo/)                                                                                                                                                                          |
+| VS Code for Python| [Python Debugger](https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy) <br> [Coding Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python)    
 | VS Code for Java Extension | [Coding Pack for Java - Windows](https://aka.ms/vscode-java-installer-win) <br> [Coding Pack for Java - macOS](https://aka.ms/vscode-java-installer-mac)                                                                                                                                          |
 | OpenJDK                    | [Microsoft Build OpenJDK 21](https://learn.microsoft.com/java/openjdk/download#openjdk-21)　<br> [Microsoft Build OpenJDK 17](https://learn.microsoft.com/java/openjdk/download#openjdk-17) <br> [Microsoft Build OpenJDK 11](https://learn.microsoft.com/ja-jp/java/openjdk/download#openjdk-11) |
 | GitHub account             | [Create free GitHub account](https://github.com/join)                                                                                                                                                                                                                                             |
-| GitHub Copilot Access      | A 60 day trial can be [requested here](https://github.com/github-copilot/signup)                                                                                                                                                                                                                  |
+| GitHub Copilot Access      | A 30 day trial can be [requested here](https://github.com/github-copilot/signup)                                                                                                                                                                                                                  |
 | A browser                  | [Download Microsoft Edge](https://www.microsoft.com/edge)                                                                                                                                                                                                                                         |
 
 
 ## Visual Studio Code Setup
 
-### Install the Extension Pack for GitHub Copilot Tools Pack
+### Install the Extension Pack for GitHub Copilot
 
-If you have installed the `GitHub Copilot Tools Pack`, the following extensions will be installed:  
+If you have installed the `GitHub Copilot`, the following extensions will be installed:  
 
 - GitHub Copilot
 - GitHub Copilot Labs
 - GitHub Copilot Chat
 
-![Install GitHub Copilot Tools Pack Extension 1](assets/github-copilot-toolkit-ext-install-1.png)
+![Install GitHub Copilot](assets/github-copilot-extension.png)
 
-To install the GitHub Copilot Tools Pack Extension, follow these steps:  
+To install the GitHub Copilot Extension, follow these steps:  
 
 1. Select `Extensions` from the VS Code menu.
-2. Search for `GitHub Copilot Tools Pack` in the Marketplace
-3. Choose `GitHub Copilot Tools Pack` and press the `Install` button. 
+2. Search for `GitHub Copilot` in the Marketplace
+3. Choose `GitHub Copilot` and press the `Install` button. 
 4. Once completed, a screen that says `Sign in to use GitHub Copilot` will appear. Press the `Sign in to GitHub` button.
 5. Next, verify whether you are signed into your GitHub account. If you are not, log in.
 6. Once logged in, a screen titled `Authenticate to authorized access` will appear. Choose the necessary organization and click the `Continue` button.
 7. Go back to Visual Studio Code and press the `Sign in to GitHub` button to utilize the `GitHub Copilot Lab`.
 8. Since you are already logged into GitHub, select the necessary organization and press the `Continue` button.
 
-<video controls playsinline width="100%" autoplay loop muted="true" src="assets/vscode-github-copilot-setup.mp4" type="video/mp4" >
- Sorry, your browser doesn't support embedded videos.
-</video>
+Next, you can add the `GitHub Copilot Chat` extension:
+
+![Install GitHub Copilot Chat](assets/github-copilot-chat-extension.png)
 
 ## IntelliJ IDEA Setup
 
@@ -228,120 +235,6 @@ Then, type `HelloRestController.java` and press the Enter key. The following scr
 
 ---
 
-# Prompt engineering in Copilot Chat
-
-In the previous section you discovered how to use basic prompts to get code from Copilot Chat. In this section you will learn techniques to get more accurate results using prompt engineering techniques.
-
-**What is prompt engineering?**
-Prompt engineering is the process of designing high quality prompts to generate high quality code suggestions. There are good practices and tips to write better prompts. Let's see some of them.
-
-## Provide examples: one-shot and few-shots programming
-
-Talking about prompt engineering, you can also use the chat to provide examples to Copilot. It's a good way to help Copilot understand what you want to do and generate better code. You can provide examples in the chat by typing with the validator.ts file open:
-
-```bash
-# one-shot programming
-
-Write me unit tests for phone number validators methods using mocha and chai in the current file.
-Use the following examples for positive test (test that should return true): 
-it('should return true if the phone number is a valid international number', () => { expect(validatePhoneNumber('+33606060606')).to.be.true; });
-Organize test in logic suites and generate at least 4 positives tests and 2 negatives tests for each method.
-```
-
-```bash
-# few-shot programming
-
-Write me unit tests for all validators methods using mocha and chai in the current file.
-Use the following examples for positive test (test that should return true): 
-it('should return true if the phone number is a valid international number', () => { expect(validatePhoneNumber('+33606060606')).to.be.true; });
-it('should return true if the phone number is a valid local american number', () => { expect(validatePhoneNumber('202-939-9889')).to.be.true; });
-it('should throw an error if the given phone number is empty', () => { expect(validatePhoneNumber('')).to.throw(); });
-Organize test in logic suites and generate at least 4 positives tests and 2 negatives tests for each method.
-```
-
-You can use this technique to **generate code that keeps the styling code from another file**. For example if you want to create sample records for music style like the Albums in albums-api>Models>Album.cs file, open it and type:
-
-```bash
-Write a MusicStyle record that conatins a List<MusicStyle> with 6 sample values like in the Album.cs file.
-```
-
-## Provide external references
-
-The chat copilot can use external references to build more accurate suggestions. For exemple if you want to generate a code that make a request to an API you can provide an example of the API response in the chat or the url to the API reference. Copilot will use it to generate better code.
-
-```bash
-Write a TS function that retreiev all dog breeds from the following API and return an array of Breed objects Request: HTTP GET https://dog.ceo/api/breeds/list/all
-```
-
-Copilot will use the given external reference to generate the code. You will see that he wil generate the Breef interface (or class) with a subBreeds property. It's coming from the API given by the external reference.
-
-```ts
-interface Breed {
-  name: string;
-  subBreeds: string[];
-}
-```
-
-<div class="tips" data-title="tip">
-
-> You can also provide links to external documentations like SDK, libraries, etc... or event normative documents like RFCs, etc...
-
-</div>
-
-## Role Prompting
-
-Also called foundational prompt, it's a general prompt you're giving to Copilot Chat to personnalise his behavior and setup your flavour of Copilot.
-
-This is probably the first thing to do when you start a new task with Copilot Chat: **provide a clear description of what you want to build and how do you want copilot to help you**.
-
-<div class="warning" data-title="Important">
-
-> **This is very powerfull when handled properly** so be sure to start every coding sessions with a role prompt and save your best prompt for future use.
-
-</div>
-
-***Structure of a role prompt***
-
-What can you include in a role prompt:
-
-- Provide solid context and background information on what you want to build.
-- Define GitHub Copilot’s role and setting expectations about what feedback we are looking for.
-- Be specific in the quality of answers and ask for reference and additional resources to learn more and ensure the answers you receive are correct
-- Resume the task and ask if the instructions are clear
-
-***Example of a role prompt***
-
-Start a new conversation and type the following prompt:
-
-```bash
-I'm working on a new mobile application that is built on React Native. 
-I need to build a new feature that will allow the user to upload a picture of a dog and get the breed of the dog. 
-I will need to use the following set of APIs to work on the breeds: https://dog.ceo/api/breeds. I need to be sure that my code is secured againt at least the OWASP Top 10 treats (https://owasp.org/Top10/). 
-I need to have unit tests for the code and i want my application to be fully accessible and conforms with the WCAG 2.1 level A and AA success criteria defined at https://www.w3.org/TR/WCAG21/.
-I need you to act as my own code coach to ensure that my code fits all these requirements. 
-When possible, please provide links and references for additional learning. 
-Do you understand these instructions? 
-```
-
-From there you can start asking questions and from time to time, ensure Copilot still follows the instructions by asking:
-
-```bash
-Are you still using the instructions I provided?
-```
-
-***Test your role prompt***
-
-You can test your role prompt by asking questions about best practices for accessibility on React Native Apps and OWASP Top 10 treats. You can also ask to generate code for the upload feature and check if the generated code is secured and accessible.
-
-Try these questions for example:
-
-```bash
-how can i make my app accessible with react native?
-
-what is the most secure way to upload a photo from my app?
-```
-
----
 
 # Github Copilot for Java Development
 
@@ -944,3 +837,211 @@ In addition to using it to solve actual problems as shown above, you can also us
 
 GitHub Copilot Chat is a versatile tool in Java application development. By using GitHub Copilot Chat, you can improve your productivity and code quality. Give it a try.  
 
+---
+
+# More Prompt engineering in GitHub Copilot
+
+In this section you will learn techniques to get more accurate results using prompt engineering techniques.
+
+**What is prompt engineering?**
+
+Prompt engineering is the process of designing high quality prompts to generate high quality code suggestions. There are good practices and tips to write better prompts. Let's see some of them.
+
+## Provide examples: one-shot and few-shots programming
+
+Talking about prompt engineering, you can also use the chat to provide examples to Copilot. It's a good way to help Copilot understand what you want to do and generate better code. You can provide examples in the chat by typing with the validator.ts file open:
+
+```bash
+# one-shot programming
+
+Write me unit tests for phone number validators methods using mocha and chai in the current file.
+Use the following examples for positive test (test that should return true): 
+it('should return true if the phone number is a valid international number', () => { expect(validatePhoneNumber('+33606060606')).to.be.true; });
+Organize test in logic suites and generate at least 4 positives tests and 2 negatives tests for each method.
+```
+
+```bash
+# few-shot programming
+
+Write me unit tests for all validators methods using mocha and chai in the current file.
+Use the following examples for positive test (test that should return true): 
+it('should return true if the phone number is a valid international number', () => { expect(validatePhoneNumber('+33606060606')).to.be.true; });
+it('should return true if the phone number is a valid local american number', () => { expect(validatePhoneNumber('202-939-9889')).to.be.true; });
+it('should throw an error if the given phone number is empty', () => { expect(validatePhoneNumber('')).to.throw(); });
+Organize test in logic suites and generate at least 4 positives tests and 2 negatives tests for each method.
+```
+
+You can use this technique to **generate code that keeps the styling code from another file**. For example if you want to create sample records for music style like the Albums in albums-api>Models>Album.cs file, open it and type:
+
+```bash
+Write a MusicStyle record that conatins a List<MusicStyle> with 6 sample values like in the Album.cs file.
+```
+
+## Provide external references
+
+The chat copilot can use external references to build more accurate suggestions. For exemple if you want to generate a code that make a request to an API you can provide an example of the API response in the chat or the url to the API reference. Copilot will use it to generate better code.
+
+```bash
+Write a TS function that retreiev all dog breeds from the following API and return an array of Breed objects Request: HTTP GET https://dog.ceo/api/breeds/list/all
+```
+
+Copilot will use the given external reference to generate the code. You will see that he wil generate the Breef interface (or class) with a subBreeds property. It's coming from the API given by the external reference.
+
+```ts
+interface Breed {
+  name: string;
+  subBreeds: string[];
+}
+```
+
+<div class="tips" data-title="tip">
+
+> You can also provide links to external documentations like SDK, libraries, etc... or event normative documents like RFCs, etc...
+
+</div>
+
+## Role Prompting
+
+Also called foundational prompt, it's a general prompt you're giving to Copilot Chat to personnalise his behavior and setup your flavour of Copilot.
+
+This is probably the first thing to do when you start a new task with Copilot Chat: **provide a clear description of what you want to build and how do you want copilot to help you**.
+
+<div class="warning" data-title="Important">
+
+> **This is very powerfull when handled properly** so be sure to start every coding sessions with a role prompt and save your best prompt for future use.
+
+</div>
+
+***Structure of a role prompt***
+
+What can you include in a role prompt:
+
+- Provide solid context and background information on what you want to build.
+- Define GitHub Copilot’s role and setting expectations about what feedback we are looking for.
+- Be specific in the quality of answers and ask for reference and additional resources to learn more and ensure the answers you receive are correct
+- Resume the task and ask if the instructions are clear
+
+***Example of a role prompt***
+
+Start a new conversation and type the following prompt:
+
+```bash
+I'm working on a new mobile application that is built on React Native. 
+I need to build a new feature that will allow the user to upload a picture of a dog and get the breed of the dog. 
+I will need to use the following set of APIs to work on the breeds: https://dog.ceo/api/breeds. I need to be sure that my code is secured againt at least the OWASP Top 10 treats (https://owasp.org/Top10/). 
+I need to have unit tests for the code and i want my application to be fully accessible and conforms with the WCAG 2.1 level A and AA success criteria defined at https://www.w3.org/TR/WCAG21/.
+I need you to act as my own code coach to ensure that my code fits all these requirements. 
+When possible, please provide links and references for additional learning. 
+Do you understand these instructions? 
+```
+
+From there you can start asking questions and from time to time, ensure Copilot still follows the instructions by asking:
+
+```bash
+Are you still using the instructions I provided?
+```
+
+***Test your role prompt***
+
+You can test your role prompt by asking questions about best practices for accessibility on React Native Apps and OWASP Top 10 treats. You can also ask to generate code for the upload feature and check if the generated code is secured and accessible.
+
+Try these questions for example:
+
+```bash
+how can i make my app accessible with react native?
+
+what is the most secure way to upload a photo from my app?
+```
+
+## Big Prompts and Short Prompts
+
+Copilot will probably will always more effective with prompt to generate small but precisely described pieces of code rather than a whole class with a unique multiple lines prompt.
+
+<div class="tip" data-title="tip">
+
+> The best strategy to generate big piece of code, is starting by the basic shell of your code with a simple prompt and then adding small pieces one by one.
+
+</div>
+
+## Writing CI pipelines
+
+*Copilot will help you in writing your pipeline definition files to generate the code for the different steps and tasks. Here are some examples of what it can do:*
+
+- *generate a pipeline definition file `from scratch`*
+- *accelerate the writing of a pipeline definition file by `generating the code` for the different `steps, tasks and pieces of script`*
+- *help `discover marketplace tasks and extensions` that match your need*
+
+### Step 1: generate from scratch
+
+- Create a new file `pipeline.yml` in the `.github/workflows` folder of the project and start typing the following prompt:
+
+```yml
+# Github Action pipeline that runs on push to main branch
+# Docker build and push the album-api image to ACR
+```
+
+*Copilot will generate the pipeline block by block. Generation pipelines Yaml, you will sometimes need to jump to a new line to trigger the generation of the next block more often than with other type of code.*
+
+*It will often generate a task with a few errores coming from bad indentation or missing quote around a task name. You can easily fix these with your IDE and your developer skills :)*
+
+### Step 2: add tasks from prompts
+
+- You probably have a github action workflow with at least a "login" task to your container registry and a "docker build and deploy" task. Add a new comment after those tasks to tag the docker image with the github run id and push it to the registry:
+
+```yml
+# tag the image with the github run id and push to docker hub
+```
+
+you can play with other prompts like:
+
+```yml
+# run tests on the album-api image
+
+# deploy the album-api image to the dev AKS cluster
+```
+
+### Step 3: add scripts from prompts
+
+- Copilot is also very usefull when you need to write custom script like the following example:
+
+```yml
+# find and replace the %%VERSION%% by the github action run id in every appmanifest.yml file
+```
+
+## Infra As Code
+
+Copilot can also help you write Infrastructure as code. It can generate code for `Terraform, ARM, Bicep, Pulumi, etc...` and also `Kubernetes manifest files`.
+
+### Bicep
+
+Open the `main.bicep`file in `iac/bicep` folder and start typing prompts at the end of the file to add new resources:
+
+```js
+// Container Registry
+
+// Azure Cognitive Services Custom Vision resource
+```
+
+### Terraform
+
+Open the `app.tf`file in `iac/terraform` folder and start typing prompts at the end of the file to add new resources:
+
+```yml
+# Container Registry
+
+# Azure Cognitive Services Custom Vision resource
+```
+
+## Generate Git Commit comment
+
+Yes, writing a comment should be mandatory and developers tend to be lazy. GitHub Copilot can help with that.
+
+1. Just edit any file by adding some relevant content into it.
+
+2. On the Git commit panel, click the small magical button on the right
+
+    ![GitHub Copilot Git comment generator](assets/git-commit.png)
+
+3. Admire Copilot having generated a comment for you
+
+    ![Generated comment(assets/git-commit2.png)
