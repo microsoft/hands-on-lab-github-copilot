@@ -838,6 +838,13 @@ GitHub Copilot Chat is a versatile tool in Java application development. By usin
 
 ---
 
+# Creating new sample Python App
+
+python-create-1.png => I create the app
+
+
+---
+
 # Github Copilot for Python Development
 
 ---
@@ -1052,3 +1059,8 @@ Yes, writing a comment should be mandatory and developers tend to be lazy. GitHu
 3. Admire Copilot having generated a comment for you
 
     ![Generated comment](assets/git-commit2.png)
+
+
+## Create custom copilot instructions
+
+https://copilot-instructions.md/
