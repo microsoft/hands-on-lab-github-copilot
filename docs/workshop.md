@@ -155,6 +155,28 @@ In this section, we will create a sample Java project for testing GitHub Copilot
   
 ## Creating a Spring Boot Application
 
+<details>
+<summary>Windows</summary>
+
+```bash
+mkdir sample; cd sample
+iwr -OutFile starter.zip "https://start.spring.io/starter.zip?`
+?dependencies=web,devtools`
+&applicationName=CopilotSample`
+&packageName=com.microsoft.sample`
+&groupId=com.microsoft.sample`
+&artifactId=CopilotSample`
+&javaVersion=21`
+&type=maven-project"
+
+explorer .
+```
+Then, extract the `starter.zip` archive
+</details>
+
+<details>
+<summary>Linux</summary>
+
 ```bash
 > mkdir sample; cd sample
 > curl https://start.spring.io/starter.zip \
@@ -169,6 +191,7 @@ In this section, we will create a sample Java project for testing GitHub Copilot
            -o my-project.zip
 > unzip my-project.zip
 ```
+</details>
 
 After unzipping the file, you will see the following directory structure:  
 
@@ -253,6 +276,14 @@ If it does not display `Ready`, please return to the [Install Environment](/work
 ## Basic Operations of GitHub Copilot
 
 Here is a basic guide on how to use GitHub Copilot. It's not just about enabling the features of GitHub Copilot. By executing shortcut commands during program implementation, or changing the content of your comments, you can modify the suggested code. So, please try out these basic operations of GitHub Copilot yourself.  
+
+<div class="tips" data-title="tip">
+
+> Note for IntelliJ users: By default, not every feature presented here is assigned a keyboard shortcut. You can assign them in IntelliJ IDEA’s settings by clicking on the GitHub Copilot shortcut and selecting "Map keyboard shortcuts."
+Then, search for "Copilot" to find all available shortcuts.
+
+</div>
+
 
 ### Code Suggestions and Explicit Triggers
 
@@ -543,6 +574,12 @@ The chat view offers a full chat experience, integrating seamlessly with your ID
 - Request code generation or fixes related to the current file and inject the code directly into the file  
 
 ![GitHub Copilot Chat Windows](./assets/github-copilot-chat-start1.png)
+
+<div class="tips" data-title="tip">
+
+> Note for IntelliJ users: To open the Copilot Chat Windows,click on the GitHub Copilot shortcut and select "Open Copilot Chat"
+
+</div>
 
 ### Using GitHub Copilot Chat Inline on the Editor
 
