@@ -1051,4 +1051,4 @@ Yes, writing a comment should be mandatory and developers tend to be lazy. GitHu
 
 3. Admire Copilot having generated a comment for you
 
-    ![Generated comment(assets/git-commit2.png)
+    ![Generated comment](assets/git-commit2.png)
