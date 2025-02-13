@@ -1131,4 +1131,40 @@ Yes, writing a comment should be mandatory and developers tend to be lazy. GitHu
 
 ## Create custom copilot instructions
 
-https://copilot-instructions.md/
+<div class="warning" data-title="Important">
+
+> Custom Copilot Instruction aren't yet available in IntelliJ IDEA. The instructions won't be taken into account with this IDE.
+
+</div>
+
+<div class="info" data-title="Preview">
+
+> The Copilot instructions file is a Public Preview feature (02/2025)
+
+</div>
+
+[Copilot intructions](https://copilot-instructions.md/) are a way to tailor Copilot Response to a specific project. 
+
+To illustrate this, create a `.github/instructions.md` file in your project and add the following content:
+
+```md
+We use Bazel for managing our Java dependencies, not Maven, so when talking about Java packages, always give me instructions and code samples that use Bazel.
+
+We always write JavaScript with double quotes and tabs for indentation, so when your responses include JavaScript code, please follow those conventions.
+
+Our team uses Jira for tracking items of work.
+```
+
+This example provides Copilot with information about the whole project. These instructions will always be talen into account when a developer will ask Copilot for help.
+
+In the example above, Copilot will **always** know that the project uses Bazel for managing Java dependencies, JavaScript with double quotes and tabs for indentation, and Jira for tracking items of work.
+
+
+## Extensibility 
+
+## Copilot Agents
+
+https://docs.github.com/en/copilot/building-copilot-extensions/building-a-copilot-agent-for-your-copilot-extension/about-copilot-agents
+
+## Copilot skillset
+https://docs.github.com/en/copilot/building-copilot-extensions/building-a-copilot-skillset-for-your-copilot-extension/about-copilot-skillsets
