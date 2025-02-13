@@ -898,58 +898,89 @@ In this section you will learn techniques to get more accurate results using pro
 
 Prompt engineering is the process of designing high quality prompts to generate high quality code suggestions. There are good practices and tips to write better prompts. Let's see some of them.
 
-## Provide examples: one-shot and few-shots programming
+## Provide examples: zero-shot, and few-shots programming
 
-Talking about prompt engineering, you can also use the chat to provide examples to Copilot. It's a good way to help Copilot understand what you want to do and generate better code. You can provide examples in the chat by typing with the validator.ts file open:
-
-```bash
-# one-shot programming
-
-Write me unit tests for phone number validators methods using mocha and chai in the current file.
-Use the following examples for positive test (test that should return true): 
-it('should return true if the phone number is a valid international number', () => { expect(validatePhoneNumber('+33606060606')).to.be.true; });
-Organize test in logic suites and generate at least 4 positives tests and 2 negatives tests for each method.
-```
+Talking about prompt engineering, you can also use the chat to provide examples to Copilot. It's a good way to help Copilot understand what you want to do and generate better code. You can use the following techniques to provide examples:
 
 ```bash
-# few-shot programming
-
-Write me unit tests for all validators methods using mocha and chai in the current file.
-Use the following examples for positive test (test that should return true): 
-it('should return true if the phone number is a valid international number', () => { expect(validatePhoneNumber('+33606060606')).to.be.true; });
-it('should return true if the phone number is a valid local american number', () => { expect(validatePhoneNumber('202-939-9889')).to.be.true; });
-it('should throw an error if the given phone number is empty', () => { expect(validatePhoneNumber('')).to.throw(); });
-Organize test in logic suites and generate at least 4 positives tests and 2 negatives tests for each method.
+# zero-shot programming : 0 examples provided
+Write a function in Java that takes an array of numbers and returns the sum.
 ```
 
-You can use this technique to **generate code that keeps the styling code from another file**. For example if you want to create sample records for music style like the Albums in albums-api>Models>Album.cs file, open it and type:
+In few-shot prompting, you provide a few examples for Copilot to learn the pattern and generate better code based on those examples. This is useful when you want to guide the model toward a specific coding style or solve a problem in a certain way.
 
 ```bash
-Write a MusicStyle record that conatins a List<MusicStyle> with 6 sample values like in the Album.cs file.
+# few-shot programming : 0 examples provided
+Write a function in Java that takes an array of numbers and returns the sum.
+Example 1 : sum(new int[]{ 1,2,3 };) => 6
+Example 2 : sum(new int[]{ 1,2,3,4 };) => 10
+Example 3 : sum(new int[]{};) => 0
 ```
 
-## Provide external references
+In this example, you provide a few examples to Copilot to learn the pattern and generate better code based on those examples.
+Here's another example.
+In a new java file, paste this code:
 
-The chat copilot can use external references to build more accurate suggestions. For exemple if you want to generate a code that make a request to an API you can provide an example of the API response in the chat or the url to the API reference. Copilot will use it to generate better code.
+```java
+public class Calculator {
 
-```bash
-Write a TS function that retreiev all dog breeds from the following API and return an array of Breed objects Request: HTTP GET https://dog.ceo/api/breeds/list/all
-```
+    public static int add(int a, int b, int c){
+        return a+ b;
+    }
 
-Copilot will use the given external reference to generate the code. You will see that he wil generate the Breef interface (or class) with a subBreeds property. It's coming from the API given by the external reference.
-
-```ts
-interface Breed {
-  name: string;
-  subBreeds: string[];
+    public static int subtract(int a, int b, int c){
+        return a - b;
+    }
 }
 ```
 
-<div class="tips" data-title="tip">
+As you can see, in each method, the third parameter is unused.
+Now, try to add a new method named multiply that has the same signature.
 
-> You can also provide links to external documentations like SDK, libraries, etc... or event normative documents like RFCs, etc...
+You should see that Copilot will generate a method with the same signature and the third parameter unused.
+![Copilot multiply method](assets/few-shots-multiply.png)
 
-</div>
+This is because Copilot learned from the examples you provided and generated a code that follows the pattern you provided.
+
+## Chain of Thought Prompting
+
+In chain of thought prompting, you break down the problem into smaller steps to guide Copilot's reasoning, making it more likely to generate code that correctly solves the problem.
+This is a techniques useful in scenarios where you want to solve a complex problem or build a complex feature.
+
+```bash
+# In this example, we will guide Copilot to generate a code that calculates the factorial of a number.
+Write a function in Java that calculates the factorial of a number.
+
+Step 1: To calculate the factorial, we need to multiply the number by all positive integers less than it.
+Step 2: If the number is 0, the factorial is defined to be 1 (base case).
+Step 3: Otherwise, multiply the number by the factorial of the number minus 1 recursively.
+```
+That being said, the factorial function is a classic example, and classic prompting will most likely generate the correct code. 
+
+However, this technique is useful when you want to guide Copilot to generate code that follows a specific pattern or algorithm. Let's foe example guide Copilot to generate a code that calculates the A* distance between two points.
+
+```bash
+# Chain of thought prompting for A* pathfinding algorithm:
+
+Step 1: The A* algorithm requires a start and a goal node to find the best path. We will need to define the nodes on a grid, each with a position (x, y).
+
+Step 2: For each node, we will calculate three values:
+    - `g`: the cost of the path from the start node to this node.
+    - `h`: the heuristic estimate of the cost from this node to the goal node.
+    - `f`: the total estimated cost, calculated as `f = g + h`.
+
+Step 3: The heuristic (`h`) will be the Manhattan distance (or another heuristic, like Euclidean) between the current node and the goal.
+
+Step 4: We need to maintain two lists: `openList` (nodes to be evaluated) and `closedList` (nodes already evaluated).
+
+Step 5: The algorithm selects the node with the lowest `f` value from `openList` and moves it to `closedList`. We evaluate its neighbors and update their `f` values accordingly.
+
+Step 6: Repeat this process until the goal node is found or there are no more nodes to evaluate.
+
+Step 7: Once the goal node is reached, reconstruct the path by tracing back from the goal node to the start node.
+
+Now, let's write the A* pathfinding algorithm in Java.
+```
 
 ## Role Prompting
 
