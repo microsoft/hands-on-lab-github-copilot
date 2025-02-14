@@ -875,21 +875,6 @@ GitHub Copilot Chat is a versatile tool in Java application development. By usin
 
 ---
 
-# Creating new sample Python App
-
-python-create-1.png => I create the app
-
-
----
-
-# Github Copilot for Python Development
-
----
-
-# Github Copilot Chat for Python Development
-
----
-
 # More Prompt engineering in GitHub Copilot
 
 In this section you will learn techniques to get more accurate results using prompt engineering techniques.
@@ -1133,6 +1118,114 @@ Yes, writing a comment should be mandatory and developers tend to be lazy. GitHu
 
     ![Generated comment](assets/git-commit2.png)
 
+---
+
+# Multiple languages 
+
+Let's put into practice what we have learned in a sample exercice.
+
+First, create a new java file and paste the following code:
+
+```java
+public class ToolBox {
+
+    static int totalCost(int mask, int pos, int n, int[][] cost) {
+
+        if (mask == (1 << n) - 1) {
+            return cost[pos][0];
+        }
+
+        int ans = Integer.MAX_VALUE;
+        for (int i = 0; i < n; i++) {
+            if ((mask & (1 << i)) == 0) {
+                int nextCost = cost[pos][i] + totalCost(mask | (1 << i), i, n, cost);
+                ans = Math.min(ans, nextCost);
+            }
+        }
+
+        return ans;
+    }
+
+    static int tsp(int[][] cost) {
+        int n = cost.length;
+        return totalCost(1, 0, n, cost);
+    }
+}
+```
+
+This code has been implemented by a colleague long ago, who happen to dislike leaving comments. But now you need to migrate it in Python. 
+
+1 - Using Copilot Chat, find out what this code does and what problem it solves.
+
+<details>
+<summary>Solution</summary>
+
+This code tackles the infamous [Traveling Salesman Problem](https://en.wikipedia.org/wiki/Travelling_salesman_problem).
+It takes a matrix of distance between cities in input and returns the shortest path that visits each city exactly once and returns to the origin city.
+For example, if the input is the following matrix:
+
+```java
+int[][] cost = {
+  //            Paris,  London,   Berlin,   Rome
+  /* Paris */   {0,       10,       15,       20},
+  /* London */  {10,      0,        35,       25},
+  /* Berlin */  {15,      35,       0,        30},
+  /* Rome */    {20,      25,       30,       0}
+};
+```
+
+The output will be `80`, which is the shortest path that visits each city exactly once and returns to the origin city.
+Paris -> London -> Rome -> Berlin -> Paris
+      10      25       30       15
+
+This is the naive, brute-force implementation. 
+
+</details>
+
+2 - Ask Copilot to generate the equivalent code in Python.
+
+<details>
+<summary>Solution</summary>
+
+```python
+def total_cost(mask, pos, n, cost):
+    if mask == (1 << n) - 1:
+        return cost[pos][0]
+
+    ans = float('inf')
+    for i in range(n):
+        if (mask & (1 << i)) == 0:
+            next_cost = cost[pos][i] + total_cost(mask | (1 << i), i, n, cost)
+            ans = min(ans, next_cost)
+
+    return ans
+
+def tsp(cost):
+    n = len(cost)
+    return total_cost(1, 0, n, cost)
+```
+
+</details>
+
+3 - Ask Copilot to generate test cases for the Python code.
+
+<details>
+<summary>Solution</summary>
+
+```python
+def test_total_cost():
+    cost = [
+        [0, 10, 15, 20],
+        [10, 0, 35, 25],
+        [15, 35, 0, 30],
+        [20, 25, 30, 0]
+    ]
+    assert total_cost(1, 0, 4, cost) == 80  
+```
+
+---
+
+# Extensibility and Preview Features
 
 ## Create custom copilot instructions
 
@@ -1164,7 +1257,6 @@ This example provides Copilot with information about the whole project. These in
 
 In the example above, Copilot will **always** know that the project uses Bazel for managing Java dependencies, JavaScript with double quotes and tabs for indentation, and Jira for tracking items of work.
 
-## Extensibility 
 
 ## Copilot Agents
 
