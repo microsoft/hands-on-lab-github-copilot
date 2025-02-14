@@ -903,14 +903,14 @@ Prompt engineering is the process of designing high quality prompts to generate 
 Talking about prompt engineering, you can also use the chat to provide examples to Copilot. It's a good way to help Copilot understand what you want to do and generate better code. You can use the following techniques to provide examples:
 
 ```bash
-# zero-shot programming : 0 examples provided
+# zero-shot programming : 0 example provided
 Write a function in Java that takes an array of numbers and returns the sum.
 ```
 
 In few-shot prompting, you provide a few examples for Copilot to learn the pattern and generate better code based on those examples. This is useful when you want to guide the model toward a specific coding style or solve a problem in a certain way.
 
 ```bash
-# few-shot programming : 0 examples provided
+# few-shot programming : 3 examples provided
 Write a function in Java that takes an array of numbers and returns the sum.
 Example 1 : sum(new int[]{ 1,2,3 };) => 6
 Example 2 : sum(new int[]{ 1,2,3,4 };) => 10
@@ -937,27 +937,30 @@ public class Calculator {
 As you can see, in each method, the third parameter is unused.
 Now, try to add a new method named multiply that has the same signature.
 
-You should see that Copilot will generate a method with the same signature and the third parameter unused.
+You should see that Copilot will generate a method with the same signature and the third parameter is unused.
 ![Copilot multiply method](assets/few-shots-multiply.png)
 
 This is because Copilot learned from the examples you provided and generated a code that follows the pattern you provided.
 
-## Chain of Thought Prompting
+## Chain of thought Prompting
 
 In chain of thought prompting, you break down the problem into smaller steps to guide Copilot's reasoning, making it more likely to generate code that correctly solves the problem.
-This is a techniques useful in scenarios where you want to solve a complex problem or build a complex feature.
+This is a technique useful in scenarios where you want to solve a complex problem or build a complex feature.
 
 ```bash
 # In this example, we will guide Copilot to generate a code that calculates the factorial of a number.
-Write a function in Java that calculates the factorial of a number.
+// Write a function in Java that calculates the factorial of a number.
 
-Step 1: To calculate the factorial, we need to multiply the number by all positive integers less than it.
-Step 2: If the number is 0, the factorial is defined to be 1 (base case).
-Step 3: Otherwise, multiply the number by the factorial of the number minus 1 recursively.
+// Step 1: To calculate the factorial, we need to multiply the number by all positive integers less than it.
+// Step 2: If the number is 0, the factorial is defined to be 1 (base case).
+// Step 3: Otherwise, multiply the number by the factorial of the number minus 1 recursively.
 ```
+
+You can test it by copying and pasting the following prompt in a file for Copilot to generate the code.
+
 That being said, the factorial function is a classic example, and classic prompting will most likely generate the correct code. 
 
-However, this technique is useful when you want to guide Copilot to generate code that follows a specific pattern or algorithm. Let's foe example guide Copilot to generate a code that calculates the A* distance between two points.
+However, this technique is useful when you want to guide Copilot to generate code that follows a specific pattern or algorithm. Let's guide Copilot to generate a code that calculates the A* distance between two points.
 
 ```bash
 # Chain of thought prompting for A* pathfinding algorithm:
@@ -982,6 +985,8 @@ Step 7: Once the goal node is reached, reconstruct the path by tracing back from
 Now, let's write the A* pathfinding algorithm in Java.
 ```
 
+Now, let's test it by copying and pasting the following prompt in the GitHub Copilot Chat. You should see that Copilot generates the code step by step following the instructions you provided with some explanations.
+
 ## Role Prompting
 
 Also called foundational prompt, it's a general prompt you're giving to Copilot Chat to personnalise his behavior and setup your flavour of Copilot.
@@ -1005,13 +1010,13 @@ What can you include in a role prompt:
 
 ***Example of a role prompt***
 
-Start a new conversation and type the following prompt:
+Start a new GitHub Copilot Chat conversation and type the following prompt:
 
 ```bash
 I'm working on a new mobile application that is built on React Native. 
 I need to build a new feature that will allow the user to upload a picture of a dog and get the breed of the dog. 
 I will need to use the following set of APIs to work on the breeds: https://dog.ceo/api/breeds. I need to be sure that my code is secured againt at least the OWASP Top 10 treats (https://owasp.org/Top10/). 
-I need to have unit tests for the code and i want my application to be fully accessible and conforms with the WCAG 2.1 level A and AA success criteria defined at https://www.w3.org/TR/WCAG21/.
+I need to have unit tests for the code and I want my application to be fully accessible and conforms with the WCAG 2.1 level A and AA success criteria defined at https://www.w3.org/TR/WCAG21/.
 I need you to act as my own code coach to ensure that my code fits all these requirements. 
 When possible, please provide links and references for additional learning. 
 Do you understand these instructions? 
@@ -1030,7 +1035,7 @@ You can test your role prompt by asking questions about best practices for acces
 Try these questions for example:
 
 ```bash
-how can i make my app accessible with react native?
+how can I make my app accessible with react native?
 
 what is the most secure way to upload a photo from my app?
 ```
