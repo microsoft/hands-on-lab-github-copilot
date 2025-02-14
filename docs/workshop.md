@@ -1164,12 +1164,43 @@ This example provides Copilot with information about the whole project. These in
 
 In the example above, Copilot will **always** know that the project uses Bazel for managing Java dependencies, JavaScript with double quotes and tabs for indentation, and Jira for tracking items of work.
 
-
 ## Extensibility 
 
 ## Copilot Agents
 
-https://docs.github.com/en/copilot/building-copilot-extensions/building-a-copilot-agent-for-your-copilot-extension/about-copilot-agents
+Copilot agents are specialized tools within Copilot Extensions that integrate with Copilot Chat to offer tailored functionalities. They can perform tasks like querying documentation, retrieving data, executing actions, and providing AI-assisted coding suggestions. These agents enhance GitHub Copilot by enabling developers to build and integrate custom features into the Copilot Chat interface. To use a Copilot agent in Copilot Chat, it must be linked to a GitHub App.
 
-## Copilot skillset
-https://docs.github.com/en/copilot/building-copilot-extensions/building-a-copilot-skillset-for-your-copilot-extension/about-copilot-skillsets
+![copilot Agents](assets/github-copilot-agent.png)
+
+More informations can be found here: [Copilot Agents][copilot-agent]
+
+
+## Copilot Skillset
+
+A skill in GitHub Copilot is a tool that the model uses to perform a specific task based on a user query. A skillset is a group of these skills (up to five per skillset). GitHub Copilot skillsets simplify the process of extending Copilot’s functionality, enabling developers to integrate external services or custom API endpoints into their Copilot workflow. With skillsets, developers can have Copilot perform tasks like retrieving data or executing actions in third-party services without managing complex workflows or architecture. You can imagine a skillset that will retreive the latest informations of a specific Jira ticket, or a skillset that will create Lorem Ipsum text.
+
+![copilot Skillset](assets/github-copilot-skillset.png)
+
+More informations can be found here: [Copilot Skillsets][copilot-skillset]
+
+## When to Choose Agents and Skillsets
+
+Choose Skillsets Skillsets when you want to:
+
+- Quickly integrate existing APIs or services without handling AI logic
+- Concentrate solely on the core functionality of your service
+- Ensure consistent Copilot-style interactions with minimal development effort
+- Begin with minimal infrastructure and setup
+
+Use agents instead if you need:
+
+- Complex and custom interaction flows
+- Control over specific LLM models (using LLMs not provided by the Copilot API)
+- Crafting custom prompts
+- Advanced state management
+
+You can find an example of the implementation of a Skillset in this [GitHub repository][copilot-skillset-repo-sample].
+
+[copilot-agent]: https://docs.github.com/en/copilot/building-copilot-extensions/building-a-copilot-agent-for-your-copilot-extension/about-copilot-agents
+[copilot-skillset]: https://docs.github.com/en/copilot/building-copilot-extensions/building-a-copilot-skillset-for-your-copilot-extension/about-copilot-skillsets
+[copilot-skillset-repo-sample]: https://github.com/copilot-extensions/skillset-example?tab=readme-ov-file
