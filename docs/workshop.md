@@ -14,13 +14,13 @@ authors:
   - Damien Aicheh
   - Julien Strebler
 contacts:
+  - "@yoshioterada"
   - "@philess"
   - "@lgmorand"
-  - "@yoshioterada"
   - "@lucas.peirone"
   - "@damienaicheh"
   - "@julien.strebler"
-duration_minutes: 120
+duration_minutes: 240
 tags: java, python, GitHub, copilot, AI, csu
 navigation_levels: 3
 ---
