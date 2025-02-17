@@ -1,9 +1,9 @@
 ---
 published: true
 type: workshop
-title: Product Hands-on Lab - GitHub Copilot, your AI pair programmer
-short_title: GitHub Copilot, your AI pair programmer
-description: Discover how to leverage GitHub Copilot to develop your projects
+title: Product Hands-on Lab - GitHub Copilot, from Basic to Advanced usage
+short_title: GitHub Copilot, from Basic to Advanced usage
+description: Get the most out of GitHub Copilot to develop your projects
 level: beginner
 navigation_numbering: true
 authors:
