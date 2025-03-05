@@ -13,6 +13,7 @@ authors:
   - Lucas Peirone
   - Damien Aicheh
   - Julien Strebler
+  - Abdoul-Hakim Afraitane
 contacts:
   - "@yoshioterada"
   - "@philess"
@@ -20,6 +21,7 @@ contacts:
   - "@lucas.peirone"
   - "@damienaicheh"
   - "@julien.strebler"
+  - "@akafraitane"
 duration_minutes: 240
 tags: java, python, GitHub, copilot, AI, csu
 navigation_levels: 3
@@ -160,14 +162,7 @@ In this section, we will create a sample Java project for testing GitHub Copilot
 
 ```bash
 mkdir sample; cd sample
-iwr -OutFile starter.zip "https://start.spring.io/starter.zip?`
-?dependencies=web,devtools`
-&applicationName=CopilotSample`
-&packageName=com.microsoft.sample`
-&groupId=com.microsoft.sample`
-&artifactId=CopilotSample`
-&javaVersion=21`
-&type=maven-project"
+iwr -OutFile starter.zip "https://start.spring.io/starter.zip?dependencies=web,devtools&applicationName=CopilotSample&packageName=com.microsoft.sample&groupId=com.microsoft.sample&artifactId=CopilotSample&javaVersion=21&type=maven-project"
 
 explorer .
 ```
@@ -178,8 +173,8 @@ Then, extract the `starter.zip` archive
 <summary>Linux</summary>
 
 ```bash
-> mkdir sample; cd sample
-> curl https://start.spring.io/starter.zip \
+mkdir sample; cd sample
+curl https://start.spring.io/starter.zip \
            -d dependencies=web,devtools \
            -d bootVersion=3.3.0 \
            -d type=maven-project \
@@ -187,9 +182,9 @@ Then, extract the `starter.zip` archive
            -d packageName=com.microsoft.sample \
            -d groupId=com.microsoft.sample \
            -d artifactId=CopilotSample \
-           -d javaVersion=21 (or 17) \ 
+           -d javaVersion=21 \ 
            -o my-project.zip
-> unzip my-project.zip
+unzip my-project.zip
 ```
 </details>
 
@@ -231,6 +226,12 @@ After unzipping the file, you will see the following directory structure:
             └── microsoft
                 └── sample
                     └── CopilotSampleTests.class
+```
+
+You can then launch the app with the following command:  
+
+```bash
+./mvnw spring-boot:run
 ```
 
 ## Opening the Project in VS Code
