@@ -85,7 +85,14 @@ To develop Java et Python applications using GitHub Copilot, you need to have ce
 | GitHub account             | [Create free GitHub account](https://github.com/join)                                                                                                                                                                                                                                             |
 | GitHub Copilot Access      | A 30 day trial can be [requested here](https://github.com/github-copilot/signup)                                                                                                                                                                                                                  |
 | A browser                  | [Download Microsoft Edge](https://www.microsoft.com/edge)                                                                                                                                                                                                                                         |
+## Environment Variables Setup
 
+Set the JAVA_HOME environment variable to the path where the JDK is installed.
+Ensure Java 21 is installed and available. Verify the version with:
+
+```bash
+./mvnw --version
+```
 
 ## Visual Studio Code Setup
 
@@ -149,11 +156,11 @@ Once these settings are in place, GitHub Copilot Chat will not use public code. 
 
 ---
 
-# Creating a New Sample Spring Boot Application
+# App setup
 
 In this section, we will create a sample Java project for testing GitHub Copilot in subsequent chapters. If you already have an existing Java project, feel free to skip this chapter and use your own project instead.  
   
-## Creating a Spring Boot Application
+## Creating a Spring Boot Sample Application
 
 <details>
 <summary>Windows</summary>
@@ -257,16 +264,18 @@ Then, type `HelloRestController.java` and press the Enter key. The following scr
 
 ---
 
-
 # Github Copilot for Java Development
 
 ## Checking if GitHub Copilot is Activated
 
-The `GitHub Copilot Status Menu` icon is located at the bottom right of VS Code.  
+The `GitHub Copilot Menu` icon is located to the right of the search bar, at the top of VS Code.  
 
 ![GitHub Copilot Status menu icon](assets/github-copilot-icon.png)
 
-By clicking on this icon, you can check the status of GitHub Copilot. 
+To check the Github Copilot status, click on the `GitHub Copilot Menu` icon. Then click on `Configure Code Completion`.
+
+![GitHub Copilot configure code completion option](assets/github-copilot-code-completion-conf.png)
+
 If it displays `Status: Ready` as shown below, GitHub Copilot is ready for use.  
 
 ![GitHub Copilot Enabled confirmation](assets/github-copilot-status.png)
@@ -360,7 +369,9 @@ As demonstrated in the basic operations above, GitHub Copilot provides various h
 
 #### Creating Markdown/HTML Documents
 
-When creating documents for your project, you'll likely write them in Markdown. GitHub Copilot can also assist in creating Markdown documents. Open a Markdown file, click on the GitHub Copilot Status Menu icon, and select `Enable Completion for markdown`.
+When creating documents for your project, you'll likely write them in Markdown. GitHub Copilot can also assist in creating Markdown documents. Open a Markdown file, click on the GitHub Copilot Menu icon, `Configure Code Completion` then select `Edit Settings`.
+
+You can then set completion for Markdown to true as shown bellow.
 
 ![Enable Completion for Markdown](assets/github-copilot-enable-completion-for-markdown.png)
 
