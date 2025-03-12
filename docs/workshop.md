@@ -642,8 +642,8 @@ Then, the code suggested by GitHub Copilot will be displayed.
 While implementing, you may sometimes forget how to implement a method in Java. In such cases, you can ask to generate code by specifying the implementation method using a particular technology. For example, if you forget how to implement using Server-Sent Events in Spring Boot, enter a comment like the one below in GitHub Copilot Chat.  
 
 ```text
-> Create sample code that periodically sends back data in a Server-Sent Events  
-  to a user who connects to the Spring Boot REST endpoint. 
+Create sample code that periodically sends back data in a Server-Sent Events  
+to a user who connects to the Spring Boot REST endpoint. 
 ```
 
 If you write a comment like this, explanations and code will be generated.  
@@ -654,7 +654,7 @@ And it also shows the sample Java code.
 
 ![GitHub Copilot Saple 2](./assets/GitHub-Copilot-chat-sample2.png)
 
-## Code Explanation
+## Code explanation
 
 Next, to understand the contents of the Java source code currently open in VS Code, you can get an explanation of the source code. GitHub Copilot Chat has prearranged commands for elucidating source code. Therefore, you can display the explanations by using these commands. First, input `/` in the console of GitHub Copilot Chat. Then, the commands that are available in GitHub Copilot Chat will appear.  
 
@@ -666,30 +666,100 @@ At this point, select `/explain`. It will appear as shown. Press the enter key t
 
 For example, select the following Java source code and execute the command.
 
-![GitHub Copilot Chat Explain 2](./assets/GitHub-Copilot-Chat-explanation-code.png)
+```java
+package com.microsoft.sample;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/products")
+public class ProductController {
+
+    // Simulated database
+    private Map<Long, Product> productDatabase;
+
+    public ProductController() {
+        // Initialize the simulated database
+        this.productDatabase = new HashMap<>();
+        
+        // Add some sample products
+        productDatabase.put(1L, new Product(1L, "Laptop", 1299.99, "High performance laptop"));
+        productDatabase.put(2L, new Product(2L, "Smartphone", 799.99, "Latest smartphone model"));
+        productDatabase.put(3L, new Product(3L, "Headphones", 149.99, "Noise cancelling headphones"));
+        productDatabase.put(4L, new Product(4L, "Tablet", 499.99, "10 inch tablet"));
+        productDatabase.put(5L, new Product(5L, "Smart Watch", 299.99, "Fitness tracking smart watch"));
+    }
+
+    /**
+     * Get all products
+     * @return List of products
+     */
+    @GetMapping
+    public ResponseEntity<List<Product>> getAllProducts() {
+        List<Product> products = new ArrayList<>(productDatabase.values());
+        return ResponseEntity.ok(products);
+    }
+
+    /**
+     * Get product by ID
+     * @param id ID of the product to retrieve
+     * @return The product if it exists
+     */
+    @GetMapping("/{id}")
+    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
+        Product product = productDatabase.get(id);
+        if (product == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(product);
+    }
+}
+```
 
 Then, an explanation of the Java source code will be provided.  
 
 ![GitHub Copilot Chat Explain 3](./assets/GitHub-Copilot-Chat-Code-Explain-3.png)
 
-### Code Correction
+## Code Correction
 
 GitHub Copilot can be used for code modification. For example, in a Java application that was implemented in the past, if there is code that was implemented with an old language specification version, you can modify that code to match the latest language specifications.  
 
-![GitHub Copilot Chat Modify the Code 1](./assets/GitHub-Copilot-Chat-modify-the-code-1.png)
+```java
+private void showAllFiles(File dir) throw IOException {
+    File[] files = dir.listFiles();
+    if (files != null) {
+        for (File file : files) {
+            if (file.isDirectory()) {
+                System.out.println("Directory: " + file.getCanonicalPath());
+                showAllFiles(file);
+            } else {
+                System.out.println("File: " + file.getCanonicalPath());
+            }
+        }
+    }
+}
+```
 
-For example, enter content like the following into the GitHub Copilot Chat prompt.  
+For example, enter content like the following into the GitHub Copilot Chat prompt or by right-clicking on the code and selecting `Ask Copilot Chat`.  
 
-```test
-> Follow the latest Java 17 language specification and modify your code  
-  to use NIO.2 or the Stream API. Use var to define variables  
+```text
+Follow the latest Java 17 language specification and modify your code to use NIO.2 or the Stream API. Use var to define variables  
 ```
 
 Then, it will suggest Java code that conforms to the latest language specifications.
 
 ![GitHub Copilot Chat Modify the Code 2](./assets/GitHub-Copilot-Chat-modify-the-code-2.png)
 
-When you move the mouse cursor to the top of the window with the suggested code, a menu will appear.  
+If you are using GitHub Copilot Chat, when you move the mouse cursor to the top of the window with the suggested code, a menu will appear.  
 
 ![GitHub Copilot Chat Modify the Code 3](./assets/GitHub-Copilot-Chat-modify-the-code-3.png)
 
