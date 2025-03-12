@@ -815,14 +815,15 @@ You can perform the following actions:
 
 By performing the above `Copy` and Paste or `Insert at Cursor [^Enter]`, you can modify the old Java code to be compliant with the latest language specifications.  
 
-## Answering Coding-Related Questions
+## Answering coding-related questions
 
 Using GitHub Copilot Chat, you can get answers to questions about Java implementation.  
 
-- Questions about the language specifications of the programming language  
-- Questions about the Java runtime environment  
-- Questions about library migration  
-- Questions about how to use a specific library  
+Questions about :
+- The language specifications of the programming language  
+- The Java runtime environment  
+- Library migration  
+- How to use a specific library  
 
 ### Questions about the language specifications of the programming language
 
@@ -833,20 +834,20 @@ For example, if you want to know about the language specifications of Java 17, y
 If you want to know about the language specifications added from Java 11 to Java 17, you can ask as follows.  
 
 ```text
-> What language specifications have been added from  
-  Java 11 to Java 17? In particular,  
-  please provide detailed information about the new writing style  
-  with sample code.  
+What language specifications have been added from  
+Java 11 to Java 17? In particular,  
+please provide detailed information about the new writing style  
+with sample code.  
 ```
 
 ### Questions about the Java runtime environment
 
-There may be times when you want to understand points of caution in development environments, runtime environments, and production environments.   
+There may be times where you want to understand points of caution in development environments, runtime environments, and production environments.   
 In such cases, you can also ask questions about points that should be noted.  
 
 ```text
-> Please explain the differences in Java VM startup options 
-  and VM behavior between Java 11 and 17.
+Please explain the differences in Java VM startup options 
+and VM behavior between Java 11 and 17.
 ```
 
 ### Questions about library migration
@@ -854,8 +855,8 @@ In such cases, you can also ask questions about points that should be noted.
 Application development is not only about new development, but also about modernizing source code and migrating from other old frameworks. In such cases, you can inquire about points to note in modernization and specific procedures for migration.  
 
 ```text
-> What should I keep in mind when migrating from a 2.7.x  
-  project to 3.1.5 with Spring Boot?
+What should I keep in mind when migrating from a 2.7.x  
+project to 3.1.5 with Spring Boot?
 ```
 
 ### Questions about how to use a specific library
@@ -863,17 +864,17 @@ Application development is not only about new development, but also about modern
 Also, when using a specific library for the first time, you may want to know how to use that library. In such cases, you can ask about how to use the library.  
 
 ```text
-> Please explain the implementation code for asynchronous  
-  processing using Mono and Flux of Project Reactor  
-  in an easy-to-understand manner with sample code.
+Please explain the implementation code for asynchronous  
+processing using Mono and Flux of Project Reactor  
+in an easy-to-understand manner with sample code.
 ```
 
-### Points to Note about GitHub Copilot Chat Questions and Answers
+### Points to note about GitHub Copilot chat questions and answers
 
 One thing to note when using GitHub Copilot Chat is that not all inquiries will return the correct answer. For example, in the author's environment, the following inquiry did not return the correct answer.  
 
 ```text
-> Please explain the details of JEP 450
+Please explain the details of JEP 450
 ```
 
 As a result of the inquiry, the following result was returned.  
@@ -891,46 +892,46 @@ The proposed contents by GitHub Copilot Chat are not always correct. Please unde
 In Java development, you can make various inquiries to GitHub Copilot Chat. Here are some examples of inquiries, so please give them a try.  
 
 ```text
-> Please tell me more about   
-  JEP 394: Pattern Matching for instanceof,   
-  including detailed sample code.  
-   
-> What does Erasure mean in Java Generics? Please explain in detail.  
-   
-> Please tell me the most recommended way to concatenate strings   
-  in Java 17. Also, please explain the differences between   
-  StringBuffer, StringBuilder, and + in an easy-to-understand manner.  
-   
-> Please tell me 10 recommended Extensions that are useful   
-  when developing Java applications in VS Code.  
-   
-> Please tell me about the differences in Java VM startup options   
-  and VM behavior between Java 11 and 17.  
-   
-> Please tell me how to enable remote debugging for Java   
-  in a container environment.  
-   
-> Please explain in detail how to create a custom JRE   
-  using the jdeps and jlink commands.  
-   
-> Please tell me 10 items to check before running a Java application   
-  in a production environment.  
-   
-> What should I keep in mind when migrating from a 2.7.x project to   
-  3.1.5 with Spring Boot?  
-   
-> I have a Java Web Application implemented with the Facade pattern   
-  in Struts 1.x. Please tell me the specific procedures and   
-  configuration methods to migrate this to Spring Boot 3.1.x,   
-  including sample code.  
-   
-> Please tell me the points to be aware of when migrating a   
-  Spring Boot application to a Quarkus application,   
-  and the specific migration method.  
-   
-> Please explain the implementation code for asynchronous  
-  processing using Mono and Flux of Project Reactor  
-  in an easy-to-understand manner with sample code.  
+Please tell me more about   
+JEP 394: Pattern Matching for instanceof,   
+including detailed sample code.  
+ 
+What does Erasure mean in Java Generics? Please explain in detail.  
+ 
+Please tell me the most recommended way to concatenate strings   
+in Java 17. Also, please explain the differences between   
+StringBuffer, StringBuilder, and + in an easy-to-understand manner.  
+ 
+Please tell me 10 recommended Extensions that are useful   
+when developing Java applications in VS Code.  
+ 
+Please tell me about the differences in Java VM startup options   
+and VM behavior between Java 11 and 17.  
+ 
+Please tell me how to enable remote debugging for Java   
+in a container environment.  
+ 
+Please explain in detail how to create a custom JRE   
+using the jdeps and jlink commands.  
+ 
+Please tell me 10 items to check before running a Java application   
+in a production environment.  
+ 
+What should I keep in mind when migrating from a 2.7.x project to   
+3.1.5 with Spring Boot?  
+ 
+I have a Java Web Application implemented with the Facade pattern   
+in Struts 1.x. Please tell me the specific procedures and   
+configuration methods to migrate this to Spring Boot 3.1.x,   
+including sample code.  
+ 
+Please tell me the points to be aware of when migrating a   
+Spring Boot application to a Quarkus application,   
+and the specific migration method.  
+ 
+Please explain the implementation code for asynchronous  
+processing using Mono and Flux of Project Reactor  
+in an easy-to-understand manner with sample code.  
 ```
 
 ## Creating Unit Tests
@@ -1011,17 +1012,19 @@ Prompt engineering is the process of designing high quality prompts to generate 
 
 ## Provide examples: zero-shot, and few-shots programming
 
-Talking about prompt engineering, you can also use the chat to provide examples to Copilot. It's a good way to help Copilot understand what you want to do and generate better code. You can use the following techniques to provide examples:
+Talking about prompt engineering, you can also use the chat to provide examples to Copilot. It's a good way to help Copilot understand what you want to do and generate better code. You can use the following techniques to provide examples. Ask **GitHub Copilot Chat** with the following samples:
 
-```bash
-# zero-shot programming : 0 example provided
+Zero-shot programming : 0 example provided
+
+```text
 Write a function in Java that takes an array of numbers and returns the sum.
 ```
 
 In few-shot prompting, you provide a few examples for Copilot to learn the pattern and generate better code based on those examples. This is useful when you want to guide the model toward a specific coding style or solve a problem in a certain way.
 
-```bash
-# few-shot programming : 3 examples provided
+Few-shot programming : 3 examples provided:
+
+```text
 Write a function in Java that takes an array of numbers and returns the sum.
 Example 1 : sum(new int[]{ 1,2,3 };) => 6
 Example 2 : sum(new int[]{ 1,2,3,4 };) => 10
@@ -1030,7 +1033,7 @@ Example 3 : sum(new int[]{};) => 0
 
 In this example, you provide a few examples to Copilot to learn the pattern and generate better code based on those examples.
 Here's another example.
-In a new java file, paste this code:
+In a new Java file, called `Calculator.java` paste this code:
 
 ```java
 public class Calculator {
@@ -1053,18 +1056,18 @@ You should see that Copilot will generate a method with the same signature and t
 
 This is because Copilot learned from the examples you provided and generated a code that follows the pattern you provided.
 
-## Chain of thought Prompting
+## Chain of thought prompting
 
 In chain of thought prompting, you break down the problem into smaller steps to guide Copilot's reasoning, making it more likely to generate code that correctly solves the problem.
 This is a technique useful in scenarios where you want to solve a complex problem or build a complex feature.
 
-```bash
-# In this example, we will guide Copilot to generate a code that calculates the factorial of a number.
-// Write a function in Java that calculates the factorial of a number.
+In this example, we will guide Copilot to generate a code that calculates the factorial of a number:
 
-// Step 1: To calculate the factorial, we need to multiply the number by all positive integers less than it.
-// Step 2: If the number is 0, the factorial is defined to be 1 (base case).
-// Step 3: Otherwise, multiply the number by the factorial of the number minus 1 recursively.
+```text
+Write a function in Java that calculates the factorial of a number.
+Step 1: To calculate the factorial, we need to multiply the number by all positive integers less than it.
+Step 2: If the number is 0, the factorial is defined to be 1 (base case).
+Step 3: Otherwise, multiply the number by the factorial of the number minus 1 recursively.
 ```
 
 You can test it by copying and pasting the following prompt in a file for Copilot to generate the code.
@@ -1073,8 +1076,8 @@ That being said, the factorial function is a classic example, and classic prompt
 
 However, this technique is useful when you want to guide Copilot to generate code that follows a specific pattern or algorithm. Let's guide Copilot to generate a code that calculates the A* distance between two points.
 
-```bash
-# Chain of thought prompting for A* pathfinding algorithm:
+```text
+// Chain of thought prompting for A* pathfinding algorithm:
 
 Step 1: The A* algorithm requires a start and a goal node to find the best path. We will need to define the nodes on a grid, each with a position (x, y).
 
@@ -1102,7 +1105,7 @@ Now, let's test it by copying and pasting the following prompt in the GitHub Cop
 
 Also called foundational prompt, it's a general prompt you're giving to Copilot Chat to personnalise his behavior and setup your flavour of Copilot.
 
-This is probably the first thing to do when you start a new task with Copilot Chat: **provide a clear description of what you want to build and how do you want copilot to help you**.
+This is probably the first thing to do when you start a new task with Copilot Chat: **provide a clear description of what you want to build and how do you want Copilot to help you**.
 
 <div class="warning" data-title="Important">
 
@@ -1116,14 +1119,14 @@ What can you include in a role prompt:
 
 - Provide solid context and background information on what you want to build.
 - Define GitHub Copilot’s role and setting expectations about what feedback we are looking for.
-- Be specific in the quality of answers and ask for reference and additional resources to learn more and ensure the answers you receive are correct
-- Resume the task and ask if the instructions are clear
+- Be specific in the quality of answers and ask for reference and additional resources to learn more and ensure the answers you received are correct.
+- Resume the task and ask if the instructions are clear.
 
 ***Example of a role prompt***
 
 Start a new GitHub Copilot Chat conversation and type the following prompt:
 
-```bash
+```text
 I'm working on a new mobile application that is built on React Native. 
 I need to build a new feature that will allow the user to upload a picture of a dog and get the breed of the dog. 
 I will need to use the following set of APIs to work on the breeds: https://dog.ceo/api/breeds. I need to be sure that my code is secured againt at least the OWASP Top 10 treats (https://owasp.org/Top10/). 
@@ -1135,7 +1138,7 @@ Do you understand these instructions?
 
 From there you can start asking questions and from time to time, ensure Copilot still follows the instructions by asking:
 
-```bash
+```text
 Are you still using the instructions I provided?
 ```
 
@@ -1145,15 +1148,15 @@ You can test your role prompt by asking questions about best practices for acces
 
 Try these questions for example:
 
-```bash
-how can I make my app accessible with react native?
+```text
+How can I make my app accessible with React Native?
 
-what is the most secure way to upload a photo from my app?
+What is the most secure way to upload a photo from my app?
 ```
 
-## Big Prompts and Short Prompts
+## Big prompts and short prompts
 
-Copilot will probably will always more effective with prompt to generate small but precisely described pieces of code rather than a whole class with a unique multiple lines prompt.
+Copilot will probably be always more effective with prompt to generate small but precisely described pieces of code rather than a whole class with a unique multiple lines prompt.
 
 <div class="tip" data-title="tip">
 
@@ -1161,46 +1164,46 @@ Copilot will probably will always more effective with prompt to generate small b
 
 </div>
 
-## Writing CI pipelines
+## Writing your CI
 
-*Copilot will help you in writing your pipeline definition files to generate the code for the different steps and tasks. Here are some examples of what it can do:*
+Copilot will help you in writing your workflow definition files to generate the code for the different steps and tasks. Here are some examples of what it can do:
 
-- *generate a pipeline definition file `from scratch`*
-- *accelerate the writing of a pipeline definition file by `generating the code` for the different `steps, tasks and pieces of script`*
-- *help `discover marketplace tasks and extensions` that match your need*
+- Generate a workflow definition file `from scratch`
+- Accelerate the writing of a workflow definition file by `generating the code` for the different `steps, tasks and pieces of script`
+- Help `discover marketplace tasks and extensions` that match your need
 
-### Step 1: generate from scratch
+### Step 1: Generate from scratch
 
-- Create a new file `pipeline.yml` in the `.github/workflows` folder of the project and start typing the following prompt:
+- Create a new file `workflow.yml` in the `.github/workflows` folder of the project (you should create the folders) and start typing the following prompt:
 
 ```yml
-# Github Action pipeline that runs on push to main branch
-# Docker build and push the album-api image to ACR
+# Github Action workflow that runs on push to main branch
+# Docker build and push the sample-project image to Azure Container Registry
 ```
 
-*Copilot will generate the pipeline block by block. Generation pipelines Yaml, you will sometimes need to jump to a new line to trigger the generation of the next block more often than with other type of code.*
+Copilot will generate the workflow block by block. Generation of YAML workflows will sometimes need to jump to a new line to trigger the generation of the next block more often than with other type of code.
 
-*It will often generate a task with a few errores coming from bad indentation or missing quote around a task name. You can easily fix these with your IDE and your developer skills :)*
+It will often generate a task with a few errors coming from bad indentation or missing quote around a task name. You can easily fix these with your IDE and your developer skills :)
 
-### Step 2: add tasks from prompts
+### Step 2: Add tasks from prompts
 
-- You probably have a github action workflow with at least a "login" task to your container registry and a "docker build and deploy" task. Add a new comment after those tasks to tag the docker image with the github run id and push it to the registry:
+You probably have a GitHub Action Workflow with at least a `login` task to your container registry and a `docker build and deploy` task. Add a new comment after those tasks to tag the docker image with the GitHub run id and push it to the registry:
 
 ```yml
-# tag the image with the github run id and push to docker hub
+# tag the image with the GitHub run id and push to docker hub
 ```
 
 you can play with other prompts like:
 
 ```yml
-# run tests on the album-api image
+# run tests on the sample-project image
 
-# deploy the album-api image to the dev AKS cluster
+# deploy the sample-project image to the dev Azure Container App Service
 ```
 
-### Step 3: add scripts from prompts
+### Step 3: Add scripts from prompts
 
-- Copilot is also very usefull when you need to write custom script like the following example:
+Copilot is also very usefull when you need to write custom script like the following example:
 
 ```yml
 # find and replace the %%VERSION%% by the github action run id in every appmanifest.yml file
@@ -1208,11 +1211,11 @@ you can play with other prompts like:
 
 ## Infra As Code
 
-Copilot can also help you write Infrastructure as code. It can generate code for `Terraform, ARM, Bicep, Pulumi, etc...` and also `Kubernetes manifest files`.
+Copilot can also help you write Infrastructure as Code. It can generate code for `ARM, Bicep, Terraform, Pulumi, etc...` and also `Kubernetes manifest files`.
 
 ### Bicep
 
-Open the `main.bicep`file in `iac/bicep` folder and start typing prompts at the end of the file to add new resources:
+Create a new file `main.bicep` in the `iac/bicep` folder of the project and start typing the following prompt:
 
 ```js
 // Container Registry
@@ -1220,9 +1223,11 @@ Open the `main.bicep`file in `iac/bicep` folder and start typing prompts at the 
 // Azure Cognitive Services Custom Vision resource
 ```
 
+Look at the generated code and see if it matches your needs. You can also add some comments to help Copilot generate the code you need.
+
 ### Terraform
 
-Open the `app.tf`file in `iac/terraform` folder and start typing prompts at the end of the file to add new resources:
+Create a new file `main.tf` in the `iac/terraform` folder of the project and start typing the following prompt:
 
 ```yml
 # Container Registry
@@ -1230,7 +1235,9 @@ Open the `app.tf`file in `iac/terraform` folder and start typing prompts at the 
 # Azure Cognitive Services Custom Vision resource
 ```
 
-## Generate Git Commit comment
+Discover the generated code and see if it matches your needs. You can also add some comments to help Copilot generate the code you need.
+
+## Generate Git commit comment
 
 Yes, writing a comment should be mandatory and developers tend to be lazy. GitHub Copilot can help with that.
 
