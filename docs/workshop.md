@@ -389,15 +389,19 @@ As shown above, not only by simply enabling the GitHub Copilot feature, but also
 
 ## Inside your Java applications
 
+<div class="info" data-title="Info">
+
+> This part will use the application created in the previous chapter. Open it in your IDE before proceeding.
+
+</div>
+
 GitHub Copilot is not language-specific and is not even restricted to programming languages. Configuration files and documentation can also benefit from its completion capabilities. This means you can use GitHub Copilot in various scenarios during the development of Java applications such as: 
 
-- Creating source code
+- Creating application code / generate dummy data
 - Creating Markdown/HTML documents
 - Editing Java property files
 
-### Creating Source Code  
-
-As demonstrated in the basic operations above, GitHub Copilot provides various hints during the implementation of source code. If you use Visual Studio Code, you can further enhance your development productivity by utilizing GitHub Copilot Chat.  
+In the following sections, we will demonstrate **how to use GitHub Copilot in these scenarios**.
 
 ### Creating Markdown/HTML documents
 
@@ -428,12 +432,17 @@ This will prompt you to enter the logging settings:
 
 ![Enable Completion for Java Properties](assets/github-copilot-for-java-properties.png)
 
-### Creating sample dummy data  
+### Code
 
-When implementing a program, you may need to create sample data and test it locally. 
-In such cases, GitHub Copilot can help you create sample data easily. For example, if you want to create sample data for stock ticker symbols, GitHub Copilot can generate a list of sample stock symbols for you.  
+As demonstrated in the basic operations above, GitHub Copilot provides various suggestions that you cna use while implemnting your business logic.
+But there are a few other area where GitHub Copilot can be very useful in the code.
 
-Open the `HelloRestController.java` file and enter the following comment.
+#### Fixtures
+
+When implementing a program, you may need to create sample data for testing locally.
+In such cases, GitHub Copilot can help you generate sample data easily. For example, if you need sample stock ticker symbols, GitHub Copilot can generate a list of stock symbols for you.
+
+In the sample app, open the `HelloRestController.java` file and enter the following comment.
 
 ```text
 // Create 20 sample data of Stock Tickers in List<String>  
@@ -443,9 +452,9 @@ The list of stock symbols created by GitHub Copilot looks like the following.
 
 ![Java Coding Sample 1](assets/java-implementation-sample1.png)
 
-Don't hesitate to look at the different suggestions and choose the one that best fits your needs using the `Crtl + Enter` command.
+Don't hesitate to look at the different suggestions and choose the one that best fits your needs using the **show all completions feature** (`Crtl + Enter`).
 
-Similarly, if you want to create sample data for male names, GitHub Copilot can generate a list of sample male names for you.  
+Similarly, if you need sample data for male names, GitHub Copilot can generate a list of example male names for you. 
 
 ```text
 // Create 20 sample data of American men's names in List<String>  
@@ -455,15 +464,15 @@ The list of name of male by GitHub Copilot looks like the following.
 
 ![Java Coding Sample 2](assets/java-implementation-sample2.png)
 
-You will probably noticed that when you choose a specific style of implementation, GitHub Copilot will suggest similar code in the future. This is because it learns from your coding style and preferences.
+You will probably notice that when you choose a specific implementation style, GitHub Copilot will suggest similar code in the future. This is because it learns from your coding style and preferences.
 
-### Implementing check methods and utility methods  
+#### Utility methods  
 
-Furthermore, GitHub Copilot can be used in various places during the implementation of a Java program. For example, you might implement check methods or utility methods in Java. In such cases, by writing comments, GitHub Copilot will propose the code for you.  
+Although already helpful in your business code, GitHub Copilot truly shines when you need to write utility methods.
 
-#### Checking the format of email addresses 
+##### E-mail address format check
 
-For instance, when implementing a method to determine whether the format of an email address is correct, you would write a comment as shown below.  
+For instance, when implementing a method to check whether an email address is in the correct format, you can start by writing a comment like the one shown below. In our sample app, open the `HelloRestController.java` (or create a new dedicated file) file and enter the following comment.  
 
 ```text
 /**
@@ -475,32 +484,30 @@ For instance, when implementing a method to determine whether the format of an e
 */
 ```
 
-The actual outputted code looks like the following.  
+The generated code may look like the following:
 
 ![Java Coding Sample 3](assets/java-implementation-sample3.png)
 
-The above regular expression `^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$` is used to validate the format of a typical email address. However, it does not cover some specific cases:  
+The above regular expression `^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$` is used to validate the format of a typical email address. These kind of generic, stack-overflow-like code snippets can be very useful when you need to implement a utility method quickly.
+
+However, GitHub Copilot is **not meant to replace your knowledge and experience**. It is important to understand the code generated by GitHub Copilot and **make sure it fits your requirements**.
+
+For example the regular expression provided above is a simple one and may not cover all the cases:
 
 1. The last part of the domain name (TLD, Top Level Domain) is limited to a range of 2 to 4 characters. However, nowadays there are TLDs with more than 4 characters, such as .info, .museum.  
 2. The username part does not allow special characters (for example + or =). However, these characters are allowed in some email systems.  
 
-Validating a complete email address is very complex, and regular expressions according to RFC 5322 can be very long and complex. However, for common cases, you can use the simplified regular expression below. If you modify the following code, it allows any alphabetic character of 2 or more characters (e.g. .museum). Also, dot (.) notation is allowed in the username part.  
+Validating a complete email address is very complex, and regular expressions according to RFC 5322 can be very long and complex.
 
-```java
-String emailRegex = "^[\\w-]+(\\.[\\w-]+)*@[\\w-]+(\\.[\\w-]+)*(\\.[a-zA-Z]{2,})$";
-Pattern pat = Pattern.compile(emailRegex);
-return email != null && pat.matcher(email).matches();
-```
+<div class="warning" data-title="takeaway">
 
-<div class="warning" data-title="warning">
-
-> The code proposed by GitHub Copilot is not always correct. The output code may need to be modified. Please understand the output code and make corrections as necessary. You can also ask GitHub Copilot to generate unit tests for you to validate all the cases.
+> GitHub Copilot is a tool to help you write code more efficiently, but it is not a replacement for your knowledge and experience. The code suggested by GitHub Copilot **is not always correct** and may require modifications. Be sure to review the generated code and make any necessary corrections. 
 
 </div>
 
-#### Leap year determination check  
+##### Leap year determination check  
 
-Next, we will implement a method for checking leap year determination. Please write a comment as shown below:  
+Let's take a look at another example : a leap year determination method. In the `HelloRestController.java` file (or a dedicated file), enter the following comment :
 
 ```text
 /**
@@ -511,33 +518,49 @@ Next, we will implement a method for checking leap year determination. Please wr
 */
 ```
 
-When you write a comment, the code will be output as shown below.
+The suggested code may look like the following:
 
 ![Java Coding Sample 4](assets/java-implementation-sample4.png)
 
-Of course, with the above code, you can determine a `leap year`, but by using the switch expression added in Java 14, you can implement it more concisely. To write using the switch expression added in Java 14, modify the comment as shown below.  
+The above code is correct, but is neither the most concise way or the most idiomatic way of doing it. A more concise way to write this method would be this:
+
+```java
+public static boolean isLeapYear(int year) {
+  return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)
+}
+```
+
+But another way to write this method would be to simply use Java [Year](https://docs.oracle.com/javase/8/docs/api/java/time/Year.html#isLeap-long-)
+
+```java
+public static boolean isLeapYear(int year) {
+  return Year.of(year).isLeap();
+}
+```
+
+You can influence the suggestions by changing the comments you write. For example, if you want to use the Year class, you can write a comment like this:
 
 ```text
 /**
 * Determine whether the year specified by the argument is a leap year  
-* The implementation will use the switch expression introduced in Java 14  
+* The implementation will use the Java Year class 
 *
 * @param year
 * @return true if the string is leap year, false otherwise
 */
 ```
 
-![Java Coding Sample 5](assets/java-implementation-sample5.png)
+In later chapters, we will see how to influence the suggestions.
 
-<div class="info" data-title="info">
+<div class="warning" data-title="Takeaway">
 
-> The code output will change depending on the comments you write. In some cases, code using older Java language specifications or old libraries may be used. In such cases, by specifically instructing the code you want to write, it will be output as instructed.  
+> The code output will change depending on the comments you write. The more detailed and precise the comments, the more accurate the code suggestions will be. 
 
 </div>
 
-#### Display files and directories under the specified directory  
+##### Directory walk  
 
-Next, we will implement a method to display the files and directories that exist under the directory specified in the argument. Write a comment as shown below:  
+A a final example, we will implement a method to display the files and directories that exist under the directory specified in the argument. Write a comment as shown below:  
 
 ```
 // Show all files and directories recursively under the directory specified by the argument  
