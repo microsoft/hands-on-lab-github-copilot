@@ -259,6 +259,8 @@ You are now ready for the next labs.
 
 ## Checking if GitHub Copilot is Activated
 
+<details>
+<summary>VS Code</summary>
 The `GitHub Copilot Menu` icon is located to the right of the search bar, at the top of VS Code. You should see it active.
 
 ![GitHub Copilot Status menu icon](assets/github-copilot-icon.png)
@@ -272,17 +274,33 @@ If it displays `Status: Ready` as shown below, GitHub Copilot is ready for use.
 ![GitHub Copilot Enabled confirmation](assets/github-copilot-status.png)
 
 If it does not display `Ready`, please return to the **Install Environment** section and set up your environment.  
+</details>
+<details>
+<summary>IntelliJ</summary>
+The `GitHub Copilot Menu` icon is located at the bottom right.
+
+![GitHub Copilot Status menu icon](assets/github-copilot-icon-intelliJ.png)
+
+To check the Github Copilot status, click on the `GitHub Copilot Menu` icon. Then click on `Enable Completions`.
+
+![GitHub Copilot configure code completion option](assets/github-copilot-code-completion-conf-intelliJ.png)
+
+If it displays `Status: Ready` as shown above, GitHub Copilot is ready for use. 
+</details>
+
+
 
 ## Basic Operations of GitHub Copilot
 
-Here is a basic guide on how to use GitHub Copilot. It's not just about enabling the features of GitHub Copilot. By executing shortcut commands during program implementation, or changing the content of your comments, you can modify the suggested code. So, please try out these basic operations of GitHub Copilot yourself.  
+<div class="important" data-title="important">
 
-<div class="info" data-title="tip">
-
-> Note for IntelliJ users: By default, not every feature presented here is assigned a keyboard shortcut. You can assign them in IntelliJ IDEA’s settings by clicking on the GitHub Copilot shortcut and selecting `Map keyboard shortcuts.`
+> **Note for IntelliJ users**: This workshop is primarily designed with VS Code in mind. That being said, everything covered in this workshop can also be done in the IntelliJ suite. However, please note that in IntelliJ IDEs, some features presented here have **no shortcut assigned by default**. You can assign them in IntelliJ IDEA’s settings by clicking on the GitHub Copilot shortcut and selecting `Map keyboard shortcuts.`
 Then, search for `Copilot` to find all available shortcuts.
+You can find all the shortcuts in the [**GitHub Copilot documentation**](https://docs.github.com/en/copilot/using-github-copilot/getting-code-suggestions-in-your-ide-with-github-copilot?tool=jetbrains).
 
 </div>
+
+Here is a basic guide on how to use GitHub Copilot. It's not just about enabling the features of GitHub Copilot. By executing shortcut commands during program implementation, or changing the content of your comments, you can modify the suggested code. So, please try out these basic operations of GitHub Copilot yourself.  
 
 
 ### Code suggestions and explicit triggers
@@ -291,12 +309,18 @@ Please open the `HelloRestController.java` file that you created in the previous
 
 ![First Trigger of GitHub Copilot](assets/github-copilot-first-trigger.png)
 
-Alternatively, you can explicitly trigger it. If code suggestions are not being made, please enter the following shortcut key. This will execute the `editor.action.inlineSuggest.trigger` command and display the code that GitHub Copilot recommends.  
+Alternatively, you can explicitly trigger it using a shortcut. This shortcut should be the same on IntelliJ IDEA and Visual Studio Code.
 
-| OS      | Trigger Inline Suggestion |
-| ------- | ------------------------- |
-| macOS   | `Option (⌥) or Alt + \`   |
-| Windows | `Alt + \`                 |
+  | OS      | Trigger Inline Suggestion |
+  | ------- | ------------------------- |
+  | macOS   | `Option (⌥) or Alt + \`   |
+  | Windows | `Alt + \`                 |
+
+<div class="tip" data-title="IntellJ">
+
+> If the shortcut is not defined, you can remap the shortcut associated to `Copilot: Show Completions` in IntellJ settings.
+
+</div>
 
 <div class="warning" data-title="warning">
 
@@ -315,7 +339,13 @@ If you do not want to accept all the suggestions that Copilot displays and only 
 | macOS   | `Command + right arrow` |
 | Windows | `Ctrl + right arrow`    |
 
-### Displaying alternate suggestions (Functionality may slightly vary depending on the environment)
+<div class="tip" data-title="IntellJ">
+
+> If the shortcut is not defined, you can remap the shortcut associated to `Copilot: Apply Next Word of Completion to Editor` in IntellJ settings.
+
+</div>
+
+### Displaying alternate suggestions
 
 There may be instances where the source code suggestions given by GitHub Copilot do not match the code you want to implement. In such cases, you can also display alternative suggestions for the initial code displayed. To show alternate suggestions, please press the following shortcut key.  
 
@@ -323,6 +353,12 @@ There may be instances where the source code suggestions given by GitHub Copilot
 | ------- | ----------------------- | ----------------------- |
 | macOS   | `Option (⌥) or Alt + ]` | `Option (⌥) or Alt + [` |
 | Windows | `Alt + \`               | `Alt + [`               |
+
+<div class="tip" data-title="IntellJ">
+
+> If the shortcut is not defined, you can remap the shortcuts associated to `Copilot: Show Next Completions` and `Copilot: Show Previous Completions` in IntellJ settings.
+
+</div>
 
 When you press the shortcut key, it will be displayed as follows.
 
@@ -332,7 +368,7 @@ If you press the shortcut key again, a different code will be output from the on
 
 ![Alternative Code 2](assets/github-copilot-altenative-code-2.png)
 
-### Displaying list of alternate suggestions (Functionality may slightly vary depending on the environment)
+### Displaying list of alternate suggestions
 
 Furthermore, if you are using Visual Studio Code, pressing the following shortcut key will display up to 10 alternative suggestions.  
 
@@ -340,13 +376,20 @@ Furthermore, if you are using Visual Studio Code, pressing the following shortcu
 | -------------- | ------------------ |
 | macOS, Windows | `Ctrl + Enter`     |
 
+<div class="tip" data-title="IntellJ">
+
+> This shortcut for this feature should be the same in recent versions of IntelliJ IDEA, but will instead open a new tab with the suggestions.
+Refer to the [documentation](https://docs.github.com/en/copilot/using-github-copilot/getting-code-suggestions-in-your-ide-with-github-copilot?tool=jetbrains#showing-alternative-suggestions) for more information.
+
+</div>
+
 ![Alternative Code 3](assets/github-copilot-altenative-lists.png)
 
 As shown above, not only by simply enabling the GitHub Copilot feature, but also by executing shortcut commands during program implementation, you can display and apply a list of alternative candidates.
 
 ## Inside your Java applications
 
-You can use GitHub Copilot in various scenarios during the development of Java applications.
+GitHub Copilot is not language-specific and is not even restricted to programming languages. Configuration files and documentation can also benefit from its completion capabilities. This means you can use GitHub Copilot in various scenarios during the development of Java applications such as: 
 
 - Creating source code
 - Creating Markdown/HTML documents
@@ -358,7 +401,7 @@ As demonstrated in the basic operations above, GitHub Copilot provides various h
 
 ### Creating Markdown/HTML documents
 
-When creating documents for your project, you'll likely write them in Markdown. GitHub Copilot can also assist in creating Markdown documents. Open the Markdown file called `HELP.md` inside the Java project created previously, click on the GitHub Copilot Menu icon, `Configure Code Completion` then select `Edit Settings`.
+When creating documents for your project, you'll likely write them in Markdown. GitHub Copilot can also assist in creating Markdown documents. Open the Markdown file called `HELP.md` inside the Java project created during the Environment Setup Step, click on the GitHub Copilot Menu icon, `Configure Code Completion` then select `Edit Settings`.
 
 You can then set completion for Markdown to true as shown bellow.
 
