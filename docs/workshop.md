@@ -74,9 +74,13 @@ With GitHub Copilot Chat, you can:
 
 # Environment Setup
 
-To develop Java et Python applications using GitHub Copilot, you need to have certain environments set up. If you haven't installed these environments yet, please do so as necessary.  
+To develop Java and Python applications using GitHub Copilot, you need to have certain environments set up. If you haven't installed these environments yet, please do so as necessary. 
 
-## Required Software and Tools
+## DevContainer Setup
+
+You can use the DevContainer provided in this [repository][github-repo] it contains all the necessary tools and libraries for this lab. You can open it inside VS Code, JetBrains or any other IDE that supports DevContainer.
+
+## Local install: Required Software and Tools
 
 | Component                  | Download Location                                                                                                                                                                                                                                                                                 |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -87,23 +91,15 @@ To develop Java et Python applications using GitHub Copilot, you need to have ce
 | GitHub account             | [Create free GitHub account](https://github.com/join)                                                                                                                                                                                                                                             |
 | GitHub Copilot Access      | A 30 day trial can be [requested here](https://github.com/github-copilot/signup)                                                                                                                                                                                                                  |
 | A browser                  | [Download Microsoft Edge](https://www.microsoft.com/edge)                                                                                                                                                                                                                                         |
-## Environment Variables Setup
-
-Set the JAVA_HOME environment variable to the path where the JDK is installed.
-Ensure Java 21 is installed and available. Verify the version with:
-
-```bash
-./mvnw --version
-```
-
 ## Visual Studio Code Setup
 
 ### Install the Extension Pack for GitHub Copilot
 
+You can skip this section if you are using the DevContainer option.
+
 If you have installed the `GitHub Copilot`, the following extensions will be installed:  
 
 - GitHub Copilot
-- GitHub Copilot Labs
 - GitHub Copilot Chat
 
 ![Install GitHub Copilot](assets/github-copilot-extension.png)
@@ -116,7 +112,7 @@ To install the GitHub Copilot Extension, follow these steps:
 4. Once completed, a screen that says `Sign in to use GitHub Copilot` will appear. Press the `Sign in to GitHub` button.
 5. Next, verify whether you are signed into your GitHub account. If you are not, log in.
 6. Once logged in, a screen titled `Authenticate to authorized access` will appear. Choose the necessary organization and click the `Continue` button.
-7. Go back to Visual Studio Code and press the `Sign in to GitHub` button to utilize the `GitHub Copilot Lab`.
+7. Go back to Visual Studio Code you should be logged in.
 8. Since you are already logged into GitHub, select the necessary organization and press the `Continue` button.
 
 Next, you can add the `GitHub Copilot Chat` extension:
@@ -142,7 +138,7 @@ To install GitHub Copilot in the IntelliJ IDEA environment, follow the steps bel
  Sorry, your browser doesn't support embedded videos.
 </video>
 
-## Avoid Using Publicly Published Code
+## Avoid using publicly published code
 
 If you set up a Copilot Business subscription for your organization, you can configure GitHub Copilot settings for your organization.  
 
@@ -156,11 +152,13 @@ Once these settings are in place, GitHub Copilot Chat will not use public code. 
 
 ![GitHub Copilot Rejected Prompt](./assets/GitHub-Copilot-Chat-rejected-prompt.png)
 
+[github-repo]: https://github.com/microsoft/hands-on-lab-github-copilot
+
 ---
 
 # App setup
 
-In this section, we will create a sample Java project for testing GitHub Copilot in subsequent chapters. If you already have an existing Java project, feel free to skip this chapter and use your own project instead.  
+In this section, we will create a sample Java project for testing GitHub Copilot in subsequent chapters.  
   
 ## Creating a Spring Boot Sample Application
 
@@ -181,16 +179,7 @@ Then, extract the `starter.zip` archive
 
 ```bash
 mkdir sample; cd sample
-curl https://start.spring.io/starter.zip \
-           -d dependencies=web,devtools \
-           -d bootVersion=3.3.0 \
-           -d type=maven-project \
-           -d applicationName=CopilotSample \
-           -d packageName=com.microsoft.sample \
-           -d groupId=com.microsoft.sample \
-           -d artifactId=CopilotSample \
-           -d javaVersion=21 \ 
-           -o my-project.zip
+curl https://start.spring.io/starter.zip -d dependencies=web,devtools -d bootVersion=3.3.0 -d type=maven-project -d applicationName=CopilotSample -d packageName=com.microsoft.sample -d groupId=com.microsoft.sample -d artifactId=CopilotSample -d javaVersion=21 -o my-project.zip
 unzip my-project.zip
 ```
 </details>
@@ -243,8 +232,9 @@ You can then launch the app with the following command:
 
 ## Opening the Project in VS Code
 
-Now that the project has been created, it's time to open it in VS Code.  
-Enter the command 'code .'
+Now that the project has been created, let's open it individualy in VS Code (Even if you are using DevContainer, you can open it in VS Code).  
+
+Enter the following command: 
 
 ```bash
 code .
@@ -254,8 +244,6 @@ Upon opening the project in VS Code, the screen below will appear. Here, click o
 
 ![Open Spring Boot App on VS Code](assets/create-helloworld-rest-controller.png)
 
-Opening Spring Boot App on VS Code  
-
 ## Creating a Hello World REST Controller
 
 Next, we will create a REST Controller. Right-click on the `src/main/java/com/microsoft/sample` folder and select `New File`. 
@@ -263,13 +251,15 @@ Then, type `HelloRestController.java` and press the Enter key. The following scr
 
 ![Create HelloWorld REST Controller](assets/create-helloworld-rest-controller-1.png)
 
+You are now ready for the next labs.
+
 ---
 
-# Github Copilot for Java Development
+# Basics of Github Copilot
 
 ## Checking if GitHub Copilot is Activated
 
-The `GitHub Copilot Menu` icon is located to the right of the search bar, at the top of VS Code.  
+The `GitHub Copilot Menu` icon is located to the right of the search bar, at the top of VS Code. You should see it active.
 
 ![GitHub Copilot Status menu icon](assets/github-copilot-icon.png)
 
@@ -281,21 +271,21 @@ If it displays `Status: Ready` as shown below, GitHub Copilot is ready for use.
 
 ![GitHub Copilot Enabled confirmation](assets/github-copilot-status.png)
 
-If it does not display `Ready`, please return to the [Install Environment](/workshop/github-copilot-java/?step=1#install-extension-pack-for-github-copilot-tools-pack) section and set up your environment.  
+If it does not display `Ready`, please return to the **Install Environment** section and set up your environment.  
 
 ## Basic Operations of GitHub Copilot
 
 Here is a basic guide on how to use GitHub Copilot. It's not just about enabling the features of GitHub Copilot. By executing shortcut commands during program implementation, or changing the content of your comments, you can modify the suggested code. So, please try out these basic operations of GitHub Copilot yourself.  
 
-<div class="tips" data-title="tip">
+<div class="info" data-title="tip">
 
-> Note for IntelliJ users: By default, not every feature presented here is assigned a keyboard shortcut. You can assign them in IntelliJ IDEA’s settings by clicking on the GitHub Copilot shortcut and selecting "Map keyboard shortcuts."
-Then, search for "Copilot" to find all available shortcuts.
+> Note for IntelliJ users: By default, not every feature presented here is assigned a keyboard shortcut. You can assign them in IntelliJ IDEA’s settings by clicking on the GitHub Copilot shortcut and selecting `Map keyboard shortcuts.`
+Then, search for `Copilot` to find all available shortcuts.
 
 </div>
 
 
-### Code Suggestions and Explicit Triggers
+### Code suggestions and explicit triggers
 
 Please open the `HelloRestController.java` file that you created in the previous chapter in your editor. There, by pressing the `Tab` key or entering a newline character, GitHub Copilot will start to suggest code for you.  
 
@@ -310,7 +300,7 @@ Alternatively, you can explicitly trigger it. If code suggestions are not being 
 
 <div class="warning" data-title="warning">
 
-> GitHub Copilot generates code predictions based on the environment it is being used in, so the content displayed may vary depending on the environment.
+> GitHub Copilot generates code predictions based on the environment it is being used in, so the content displayed may vary depending on your environment.
 
 </div>
 
@@ -325,7 +315,7 @@ If you do not want to accept all the suggestions that Copilot displays and only 
 | macOS   | `Command + right arrow` |
 | Windows | `Ctrl + right arrow`    |
 
-### Displaying Alternate Suggestions (Functionality may slightly vary depending on the environment)
+### Displaying alternate suggestions (Functionality may slightly vary depending on the environment)
 
 There may be instances where the source code suggestions given by GitHub Copilot do not match the code you want to implement. In such cases, you can also display alternative suggestions for the initial code displayed. To show alternate suggestions, please press the following shortcut key.  
 
@@ -342,7 +332,7 @@ If you press the shortcut key again, a different code will be output from the on
 
 ![Alternative Code 2](assets/github-copilot-altenative-code-2.png)
 
-### Displaying List of Alternate Suggestions (Functionality may slightly vary depending on the environment)
+### Displaying list of alternate suggestions (Functionality may slightly vary depending on the environment)
 
 Furthermore, if you are using Visual Studio Code, pressing the following shortcut key will display up to 10 alternative suggestions.  
 
@@ -352,11 +342,9 @@ Furthermore, if you are using Visual Studio Code, pressing the following shortcu
 
 ![Alternative Code 3](assets/github-copilot-altenative-lists.png)
 
-As shown above, not only by simply enabling the GitHub Copilot feature, but also by executing shortcut commands during program implementation, you can display and apply a list of alternative candidates. By all means, please learn the basic operations of GitHub Copilot and give it a try.  
+As shown above, not only by simply enabling the GitHub Copilot feature, but also by executing shortcut commands during program implementation, you can display and apply a list of alternative candidates.
 
-## Using GitHub Copilot in Java Application Development
-
-### Points where GitHub Copilot can be used during Java application development
+## Inside your Java applications
 
 You can use GitHub Copilot in various scenarios during the development of Java applications.
 
@@ -364,13 +352,13 @@ You can use GitHub Copilot in various scenarios during the development of Java a
 - Creating Markdown/HTML documents
 - Editing Java property files
 
-#### Creating Source Code  
+### Creating Source Code  
 
 As demonstrated in the basic operations above, GitHub Copilot provides various hints during the implementation of source code. If you use Visual Studio Code, you can further enhance your development productivity by utilizing GitHub Copilot Chat.  
 
-#### Creating Markdown/HTML Documents
+### Creating Markdown/HTML documents
 
-When creating documents for your project, you'll likely write them in Markdown. GitHub Copilot can also assist in creating Markdown documents. Open a Markdown file, click on the GitHub Copilot Menu icon, `Configure Code Completion` then select `Edit Settings`.
+When creating documents for your project, you'll likely write them in Markdown. GitHub Copilot can also assist in creating Markdown documents. Open the Markdown file called `HELP.md` inside the Java project created previously, click on the GitHub Copilot Menu icon, `Configure Code Completion` then select `Edit Settings`.
 
 You can then set completion for Markdown to true as shown bellow.
 
@@ -383,20 +371,26 @@ For example, if you input `#`, it will prompt you to enter a string following th
 
 You can also use GitHub Copilot when writing HTML documents.  
 
-#### Editing Java Property Files  
+### Editing Java property files  
 
-Additionally, GitHub Copilot can be used when editing Java property files. Properties are set according to the libraries you use, but it can be challenging to remember all the properties. In such cases, when you enter the property keyword, GitHub Copilot will display possible property candidates for you.  
+Additionally, GitHub Copilot can be used when editing Java property files. Properties are set according to the libraries you use, but it can be challenging to remember all the properties. In such cases, when you enter the property keyword, GitHub Copilot will display possible property candidates for you. 
+
+You can open the `application.properties` file in the `src/main/resources` folder and enter the following comment. 
+
+```text
+# Logging settings
+```
+
+This will prompt you to enter the logging settings:
 
 ![Enable Completion for Java Properties](assets/github-copilot-for-java-properties.png)
 
-## Using GitHub Copilot in Java Source Code Implementation
-
-Let's look at a few specific ways to utilize GitHub Copilot when editing Java source code.  
-
-### Creating Sample Dummy Data  
+### Creating sample dummy data  
 
 When implementing a program, you may need to create sample data and test it locally. 
 In such cases, GitHub Copilot can help you create sample data easily. For example, if you want to create sample data for stock ticker symbols, GitHub Copilot can generate a list of sample stock symbols for you.  
+
+Open the `HelloRestController.java` file and enter the following comment.
 
 ```text
 // Create 20 sample data of Stock Tickers in List<String>  
@@ -405,6 +399,8 @@ In such cases, GitHub Copilot can help you create sample data easily. For exampl
 The list of stock symbols created by GitHub Copilot looks like the following.
 
 ![Java Coding Sample 1](assets/java-implementation-sample1.png)
+
+Don't hesitate to look at the different suggestions and choose the one that best fits your needs using the `Crtl + Enter` command.
 
 Similarly, if you want to create sample data for male names, GitHub Copilot can generate a list of sample male names for you.  
 
@@ -416,11 +412,13 @@ The list of name of male by GitHub Copilot looks like the following.
 
 ![Java Coding Sample 2](assets/java-implementation-sample2.png)
 
-### Implementing Check Methods and Utility Methods  
+You will probably noticed that when you choose a specific style of implementation, GitHub Copilot will suggest similar code in the future. This is because it learns from your coding style and preferences.
+
+### Implementing check methods and utility methods  
 
 Furthermore, GitHub Copilot can be used in various places during the implementation of a Java program. For example, you might implement check methods or utility methods in Java. In such cases, by writing comments, GitHub Copilot will propose the code for you.  
 
-#### Checking the Format of Email Addresses 
+#### Checking the format of email addresses 
 
 For instance, when implementing a method to determine whether the format of an email address is correct, you would write a comment as shown below.  
 
@@ -453,11 +451,11 @@ return email != null && pat.matcher(email).matches();
 
 <div class="warning" data-title="warning">
 
-> The code proposed by GitHub Copilot is not always correct. The output code may need to be modified. Please understand the output code and make corrections as necessary.  
+> The code proposed by GitHub Copilot is not always correct. The output code may need to be modified. Please understand the output code and make corrections as necessary. You can also ask GitHub Copilot to generate unit tests for you to validate all the cases.
 
 </div>
 
-#### Leap Year Determination Check  
+#### Leap year determination check  
 
 Next, we will implement a method for checking leap year determination. Please write a comment as shown below:  
 
@@ -494,7 +492,7 @@ Of course, with the above code, you can determine a `leap year`, but by using th
 
 </div>
 
-#### Display Files and Directories Under the Specified Directory  
+#### Display files and directories under the specified directory  
 
 Next, we will implement a method to display the files and directories that exist under the directory specified in the argument. Write a comment as shown below:  
 
@@ -525,7 +523,7 @@ As a result, a modern code like the one below has been output.
 
 <div class="info" data-title="info">
 
-> Just like the Leap Year calculation mentioned above, rewriting the comments will prompt it to suggest code using new language specifications or new libraries.
+> Just like the leap year calculation mentioned above, rewriting the comments will prompt it to suggest code using new language specifications or new libraries.
 
 </div>
 
@@ -542,7 +540,7 @@ As a result, a modern code like the one below has been output.
 
 Similar to GitHub Copilot, GitHub Copilot Chat provides AI-powered code completion. However, it goes beyond code completion by answering questions about code, offering explanations, and suggesting code modifications, thereby enhancing code quality.  
 
-Here are some scenarios where GitHub Copilot Chat can be applied in Java application development:  
+Here are some scenarios where GitHub Copilot Chat can be applied when developing your application:  
 
 - Code generation
 - Code explanation
@@ -561,7 +559,24 @@ GitHub Copilot can be used in two ways:
 
 ### Using the dedicated GitHub Copilot chat window  
 
-Click on the GitHub Copilot icon in the lower left of VS Code to display the GitHub Copilot chat window.  
+Click on the GitHub Copilot icon in the left panel of VS Code to display the GitHub Copilot chat window.  
+
+#### Chat View
+
+The chat view offers a full chat experience, integrating seamlessly with your IDE. Once the view is open, you can start chatting with Copilot as your personal code coach. It keeps a history of the conversation and provides suggestions for questions along the way. What is interresting is that the chat can interract with yout project and can use it as a context.
+
+You can:  
+
+- Ask general questions about coding in any language or best practices  
+- Request code generation or fixes related to the current file and inject the code directly into the file  
+
+![GitHub Copilot Chat Windows](./assets/github-copilot-chat-start1.png)
+
+<div class="info" data-title="tip">
+
+> Note for IntelliJ users: To open the Copilot Chat Windows,click on the GitHub Copilot shortcut and select `Open Copilot Chat`
+
+</div>
 
 #### Slash Commands
 
@@ -578,24 +593,10 @@ To help Copilot provide more relevant answers, you can specify a topic for your 
 - **/help**: Get general help about GitHub Copilot.  
 - **/clear**: Clear the session.
 
-#### Chat View
 
-The chat view offers a full chat experience, integrating seamlessly with your IDE. Once the view is open, you can start chatting with Copilot as your personal code coach. It keeps a history of the conversation and provides suggestions for questions along the way. You can:  
+### Using GitHub Copilot chat inline on the editor
 
-- Ask general questions about coding in any language or best practices  
-- Request code generation or fixes related to the current file and inject the code directly into the file  
-
-![GitHub Copilot Chat Windows](./assets/github-copilot-chat-start1.png)
-
-<div class="tips" data-title="tip">
-
-> Note for IntelliJ users: To open the Copilot Chat Windows,click on the GitHub Copilot shortcut and select "Open Copilot Chat"
-
-</div>
-
-### Using GitHub Copilot Chat Inline on the Editor
-
-By pressing `Command + i` (or `Ctrl + Shift + i`) on the editor, an inline command window for Copilot Chat will appear within the editor.  
+By pressing `Command + i` (or `Ctrl + i`) on the editor, an inline command window for Copilot Chat will appear within the editor.  
    
 In inline mode, you can:  
    
@@ -616,18 +617,18 @@ Additionally, typing `/` will display the commands that can be executed in GitHu
 
 GitHub Copilot Chat can generate code for you.
 
-### Create CRUD Operation for Spring Boot Application  
+### Create CRUD operation for Spring Boot Application  
 
 When creating a web application, you might need to create an application that performs CRUD operations. This requires implementing the web frontend, backend processing, and configuring property files. In such cases, if you enter a comment like the one below into GitHub Copilot Chat, it will suggest an implementation for a CRUD application.  
 
 ```text
-> Create a sample application that performs CRUD operations to manage  
-  people (name, id, e-mail, address) in Spring Boot.  
-  The data should be persisted to the DB, and the database operations  
-  should be implemented in Spring Data JPA.  
-  The front should be implemented in Thymeleaf.  
-  Please show all implementation of classes and methods and  
-  application property configuration file.  
+Create a sample application that performs CRUD operations to manage  
+people (name, id, e-mail, address) in Spring Boot.  
+The data should be persisted to the DB, and the database operations  
+should be implemented in Spring Data JPA.  
+The front should be implemented in Thymeleaf.  
+Please show all implementation of classes and methods and  
+application property configuration file.  
 ```
 
 Then, the code suggested by GitHub Copilot will be displayed.  
