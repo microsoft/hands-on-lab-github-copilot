@@ -255,7 +255,7 @@ You are now ready for the next labs.
 
 ---
 
-# Basics of Github Copilot
+# Basics of GitHub Copilot
 
 ## Checking if GitHub Copilot is Activated
 
@@ -265,7 +265,7 @@ The `GitHub Copilot Menu` icon is located to the right of the search bar, at the
 
 ![GitHub Copilot Status menu icon](assets/github-copilot-icon.png)
 
-To check the Github Copilot status, click on the `GitHub Copilot Menu` icon. Then click on `Configure Code Completion`.
+To check the GitHub Copilot status, click on the `GitHub Copilot Menu` icon. Then click on `Configure Code Completion`.
 
 ![GitHub Copilot configure code completion option](assets/github-copilot-code-completion-conf.png)
 
@@ -281,7 +281,7 @@ The `GitHub Copilot Menu` icon is located at the bottom right.
 
 ![GitHub Copilot Status menu icon](assets/github-copilot-icon-intelliJ.png)
 
-To check the Github Copilot status, click on the `GitHub Copilot Menu` icon. Then click on `Enable Completions`.
+To check the GitHub Copilot status, click on the `GitHub Copilot Menu` icon. Then click on `Enable Completions`.
 
 ![GitHub Copilot configure code completion option](assets/github-copilot-code-completion-conf-intelliJ.png)
 
@@ -572,7 +572,7 @@ As a result, a modern code like the one below has been output.
 
 ---
 
-# Github Copilot Chat for Java Development
+# GitHub Copilot Chat for Java Development
 
 <div class="info" data-title="info">
 
@@ -963,8 +963,8 @@ In Java application development, there may be times when errors occur at compile
 For example, when running a Java application, an exception may occur, and at first glance, the content of the error may be hard to understand. However, by asking GitHub Copilot Chat about the error, it will explain the content of the error to you.  
 
 ```text
-> When running the application, the following exception was output.   
-  What does the following mean?  
+When running the application, the following exception was output.   
+What does the following mean?  
 
 ### Exception
 Copy & Paste the Java Stack Trace
@@ -974,12 +974,12 @@ Copy & Paste the Java Stack Trace
 Furthermore, you can even inquire about how to deal with the problem that occurred.  
 
 ```text
-> How can I solve the above issues?  
+How can I solve the above issues?  
  
-> Can you propose a fix?  
+Can you propose a fix?  
 
-> To solve the issue, please let me know   
-  how to implement *** with sample code.  
+To solve the issue, please let me know   
+how to implement *** with sample code.  
 ```
 
 When you inquire about an actual exception that occurred and ask for how to deal with it, you will receive an answer as shown below.  
@@ -991,9 +991,9 @@ When you inquire about an actual exception that occurred and ask for how to deal
 In addition to using it to solve actual problems as shown above, you can also use it to find potential bugs or improve the quality of your code by asking about the following contents.  
 
 ```text
-> Can you check this code for potential bugs or security issues?  
+Can you check this code for potential bugs or security issues?  
 
-> Do you see any quality improvement to do on this code?  
+Do you see any quality improvement to do on this code?  
 ```
 
 ## Conclusion
@@ -1177,7 +1177,7 @@ Copilot will help you in writing your workflow definition files to generate the 
 - Create a new file `workflow.yml` in the `.github/workflows` folder of the project (you should create the folders) and start typing the following prompt:
 
 ```yml
-# Github Action workflow that runs on push to main branch
+# GitHub Action workflow that runs on push to main branch
 # Docker build and push the sample-project image to Azure Container Registry
 ```
 
@@ -1206,7 +1206,7 @@ you can play with other prompts like:
 Copilot is also very usefull when you need to write custom script like the following example:
 
 ```yml
-# find and replace the %%VERSION%% by the github action run id in every appmanifest.yml file
+# find and replace the %%VERSION%% by the GitHub action run id in every appmanifest.yml file
 ```
 
 ## Infra As Code
