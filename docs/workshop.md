@@ -597,11 +597,6 @@ As a result, a modern code like the one below has been output.
 
 # GitHub Copilot Chat for Java Development
 
-<div class="info" data-title="info">
-
-> Currently, GitHub Copilot Chat does not offer a plugin for IntelliJ IDEA. In this guide, we will demonstrate how to use GitHub Copilot Chat with Visual Studio Code.  
-</div>
-
 ## About GitHub Copilot Chat  
 
 Similar to GitHub Copilot, GitHub Copilot Chat provides AI-powered code completion. However, it goes beyond code completion by answering questions about code, offering explanations, and suggesting code modifications, thereby enhancing code quality.  
@@ -961,7 +956,111 @@ in an easy-to-understand manner with sample code.
 
 GitHub Copilot Chat can also generate unit tests for you.  
 
-### Create a Unit Test for Spring Boot Application
+### Setting up
+
+To start with, we will generate the code that we want to test. First, ask GitHub Copilot Chat to generate a ProductController class.  
+
+```text
+Create a productcontroller class with REST bindings
+```
+
+You should see the following code generated.  
+
+```java
+package com.microsoft.sample;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@RestController
+public class ProductController {
+
+    private List<Product> products = new ArrayList<>();
+
+    @GetMapping("/products")
+    public List<Product> getAllProducts() {
+        return products;
+    }
+
+    @GetMapping("/products/{id}")
+    public Product getProductById(@PathVariable int id) {
+        return products.stream()
+                .filter(product -> product.getId() == id)
+                .findFirst()
+                .orElse(null);
+    }
+
+    @PostMapping("/products")
+    public Product addProduct(@RequestBody Product product) {
+        products.add(product);
+        return product;
+    }
+}
+```
+
+Copy that code in a new `ProductController.java` file in the sample project. 
+
+Next, let's generate the corresponding Product Model. In the same conversation, ask GitHub Copilot Chat to generate a Product model:
+
+```text
+Create the corresponding Product model
+```
+
+You should see the following code generated.  
+
+```java
+package com.microsoft.sample;
+
+public class Product {
+    private int id;
+    private String name;
+    private double price;
+
+    // Getters and setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+}
+```
+
+Copy that code in a new `Product.java` file in the sample project.
+
+You can then check that the code is working by running the application.
+
+```bash
+# The tomcat server will start and you can access the application at http://localhost:8080/products
+# By default, the application will return an empty list of products
+# You can modify the code to add products and retrieve them
+./mvnw spring-boot:run
+```
+
+### Create Unit Tests
 
 When implementing a Spring Boot application, you may want to create a unit test for the application.  
 In such cases, you can select the class or method you want to test and ask GitHub Copilot Chat to create a unit test for you.  
