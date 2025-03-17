@@ -12,7 +12,6 @@ authors:
   - Louis-Guillaume Morand
   - Lucas Peirone
   - Damien Aicheh
-  - Julien Strebler
   - Abdoul-Hakim Afraitane
 contacts:
   - "@yoshioterada"
@@ -20,7 +19,6 @@ contacts:
   - "@lgmorand"
   - "@lucas.peirone"
   - "@damienaicheh"
-  - "@julien.strebler"
   - "@akafraitane"
 duration_minutes: 240
 tags: java, python, GitHub, copilot, AI, csu
